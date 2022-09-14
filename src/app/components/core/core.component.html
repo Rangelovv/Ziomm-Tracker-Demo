@@ -1,0 +1,22 @@
+
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="opened =! opened">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+    <span routerLink="landing" (click)="closeSidenavOnRouting()"> Ziomm App Beta </span>
+  </mat-toolbar>
+
+
+
+<mat-sidenav-container hasBackdrop="false">
+  <mat-sidenav [opened]="opened" mode="push" autoFocus="false"  >
+    <mat-action-list>
+      <button mat-list-item *ngFor="let item of elements" [routerLink]=[item.link] (click)="closeSidenavOnRouting()" > {{item.name}} </button>
+    </mat-action-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

@@ -1,0 +1,67 @@
+<mat-tab-group mat-stretch-tabs >
+    <mat-tab label="Create"></mat-tab>
+    <mat-tab label="Existing"></mat-tab>
+</mat-tab-group>
+
+<mat-vertical-stepper>
+    <mat-step>
+        <ng-template matStepLabel>Name</ng-template>
+        <p>What is the name of your character ?</p>
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" formControlName="firstCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+    </mat-step>
+
+    <mat-step lable="Tribe">
+        <ng-template matStepLabel>Tribe</ng-template>
+        <p>Choose from which of your existing tribes is your character ?</p>
+        <mat-form-field appearance="fill">
+            <mat-label>Tribe</mat-label>
+            <input matInput placeholder="Tribe" formControlName="firstCtrl" required>
+        </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+    </mat-step>
+
+    <mat-step lable="Armory">
+        <ng-template matStepLabel>Armory</ng-template>
+        <p>Choose your armory ?</p>
+        <mat-form-field appearance="fill">
+            <mat-label>Armory</mat-label>
+            <input matInput placeholder="Armory" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+    </mat-step>
+
+    <mat-step lable="Stats">
+        <ng-template matStepLabel>Stats</ng-template>
+        <p>What are your stats ?</p>
+        <mat-form-field appearance="fill">
+            <mat-label>Stats</mat-label>
+            <input matInput placeholder="Stats" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+    </mat-step>
+
+    <mat-step lable="Done">
+        <ng-template matStepLabel>Done</ng-template>
+        <p>Are you sure, you are ready ?</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+    </mat-step>
+
+</mat-vertical-stepper>
