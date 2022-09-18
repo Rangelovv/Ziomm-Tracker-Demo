@@ -1,4 +1,10 @@
-<div *ngFor="let character of characters">
-    <h1>{{character.name}}</h1>
-    <h4>{{character.tribe}}</h4>
+<div style=" padding: 1% 3%;">
+    <mat-accordion>
+            <mat-expansion-panel *ngFor="let character of characters">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>{{character.name}}</mat-panel-title>
+                </mat-expansion-panel-header>
+                <h1>{{character.tribe}}</h1>
+            </mat-expansion-panel>
+    </mat-accordion>
 </div>

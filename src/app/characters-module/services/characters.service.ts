@@ -5,7 +5,10 @@ import { CharacterModel } from '../models/character.model';
 })
 export class CharactersService {
 
-  characters: CharacterModel[] = []
+  characters: CharacterModel[] = [
+    {name:"Sasho", tribe: "Planeta"},
+    {name:"Hakera", tribe: "Madara"}
+  ]
   constructor() { }
 
   returnCharacters(){
