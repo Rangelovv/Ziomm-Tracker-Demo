@@ -1,67 +1,54 @@
 <div style=" padding: 2.5% 10%;">
-<mat-horizontal-stepper>
-  <form [formGroup]="charachterAddForm">
-    <mat-step>
-        <ng-template matStepLabel>Name</ng-template>
-        <p>What is the name of your character ?</p>
-        <mat-form-field appearance="fill">
-            <mat-label>Name</mat-label>
-            <input matInput placeholder="Name" required  formControlName="name">
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <form [formGroup]="charachterAddForm">
+      
+      <mat-step>
+          <ng-template matStepLabel>Name</ng-template>
+          <p>What is the name of your character ?</p>
+          <mat-form-field appearance="fill">
+              <mat-label>Name</mat-label>
+              <input matInput required  formControlName="name">
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+      </mat-step>
+
+      <mat-step lable="Tribe">
+          <ng-template matStepLabel>Tribe</ng-template>
+          <p>Choose from which of your existing tribes is your character ?</p>
+          <mat-form-field appearance="fill">
+              <mat-label>Tribe</mat-label>
+              <input matInput required formControlName="tribe">
+          </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+      </mat-step>
+
+      <mat-step lable="Stats">
+          <ng-template matStepLabel>Stats</ng-template>
+          <p>What are your stats ?</p>
+          <mat-form-field appearance="fill">
+              <mat-label>Stats</mat-label>
+              <input matInput required>
           </mat-form-field>
           <div>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-    </mat-step>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+      </mat-step>
 
-    <mat-step lable="Tribe">
-        <ng-template matStepLabel>Tribe</ng-template>
-        <p>Choose from which of your existing tribes is your character ?</p>
-        <mat-form-field appearance="fill">
-            <mat-label>Tribe</mat-label>
-            <input matInput placeholder="Tribe" required formControlName="tribe">
-        </mat-form-field>
+      <mat-step lable="Done">
+          <ng-template matStepLabel>Done</ng-template>
+          <p>Are you sure, you are ready ?</p>
           <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="onSubmit(); stepper.reset()" >Done</button>
           </div>
-    </mat-step>
+      </mat-step>
 
-    <mat-step lable="Armory">
-        <ng-template matStepLabel>Armory</ng-template>
-        <p>Choose your armory ?</p>
-        <mat-form-field appearance="fill">
-            <mat-label>Armory</mat-label>
-            <input matInput placeholder="Armory" required>
-        </mat-form-field>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-    </mat-step>
-
-    <mat-step lable="Stats">
-        <ng-template matStepLabel>Stats</ng-template>
-        <p>What are your stats ?</p>
-        <mat-form-field appearance="fill">
-            <mat-label>Stats</mat-label>
-            <input matInput placeholder="Stats" required>
-        </mat-form-field>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-    </mat-step>
-
-    <mat-step lable="Done">
-        <ng-template matStepLabel>Done</ng-template>
-        <p>Are you sure, you are ready ?</p>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="onSubmit()">Done</button>
-            <button mat-button>Reset</button>
-
-          </div>
-    </mat-step>
-  </form>
-</mat-horizontal-stepper>
+    </form>
+  </mat-horizontal-stepper>
 </div>
