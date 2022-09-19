@@ -26,6 +26,7 @@ export class CharacterCreationComponent implements OnInit {
       tribe: this.charachterAddForm.value.tribe
     }
     this.charService.addCharacter(character)
+    this.charachterAddForm.reset()
   }
 
 }
