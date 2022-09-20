@@ -45,7 +45,7 @@
           <p>Are you sure, you are ready ?</p>
           <div>
               <button mat-button matStepperPrevious>Back</button>
-              <button mat-button (click)="onSubmit(); stepper.reset()" >Done</button>
+              <button mat-button (click)="onSubmit(); stepper.reset(); openSnackBar()" >Done</button>
           </div>
       </mat-step>
 
