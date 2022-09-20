@@ -4,7 +4,19 @@
                 <mat-expansion-panel-header>
                     <mat-panel-title>{{character.name}}</mat-panel-title>
                 </mat-expansion-panel-header>
-                <h1>{{character.tribe}}</h1>
+                <h3 *ngIf="character.tribe; else noTribe ">{{character.name}} is from the tribe {{character.tribe}}</h3>
+                <ng-template #noTribe>{{character.name}} does not have a tribe.</ng-template>
+
+                <h2>Character statistics</h2>
+                <li>Toatal HP: {{character.totalHP}} </li>
+                <li>Head HP: {{character.headHP}} </li>
+                <li>Body HP: {{character.bodyHP}} </li>
+                <li>Right Arm HP: {{character.rarmHP}} </li>
+                <li>Left Arm HP: {{character.larmHP}} </li>
+                <li>Right Leg HP: {{character.rlegHP}} </li>
+                <li>Left Leg HP: {{character.llegHP}} </li>
+                <li>Movement Speed(MS): {{character.movementSpeed}} </li>
             </mat-expansion-panel>
     </mat-accordion>
 </div>
+   
