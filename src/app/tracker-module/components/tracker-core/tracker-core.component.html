@@ -1,1 +1,18 @@
-<p>tracker-core works!</p>
+<mat-toolbar>
+    <button mat-raised-button color="primary"> Start Game </button>
+</mat-toolbar>
+
+<mat-tab-group mat-stretch-tabs >
+    <mat-tab *ngFor="let character of trackingCharacters">
+        <ng-template mat-tab-label>
+            {{character.name}}
+        </ng-template>
+        <button (click)="hpUp()">plus</button>
+    <h2>{{currentHealth}} / {{health}}</h2>
+    <button (click)="hpDown()">minus</button>
+
+    </mat-tab>
+</mat-tab-group>
+
+
+
