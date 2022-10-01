@@ -1,5 +1,6 @@
 <div class="statistics">
-    <div class="title"><h1>Health Statistics</h1></div>
+    <div class="title"><h1>Character Statistics</h1></div>
+    <mat-divider></mat-divider>
     <div class="totalContainer">
         <div class="inlineStat">
             <h1>Total health: {{currentHealth}} / {{totalHealth}}</h1>
@@ -16,6 +17,11 @@
     <mat-divider></mat-divider>
     <div class="headContainer">
         <div class="inlineStat">
+            <div class="dmgDots">
+                <mat-icon color="primary" >circle</mat-icon>
+                <mat-icon color="primary" >circle</mat-icon>
+                <mat-icon color="primary" >circle</mat-icon>
+            </div>
             <h1>Head: {{currentHeadHP}} / {{totalHeadHP}}</h1>
         </div>
         <div class="inlineControls">
@@ -44,6 +50,10 @@
     <mat-divider></mat-divider>
     <div class="rightArmContainer">
         <div class="inlineStat">
+            <div class="dmgDots">
+                <mat-icon color="primary" >circle</mat-icon>
+                <mat-icon color="primary" >circle</mat-icon>
+            </div>
             <h1>Right Arm: {{currentRArmHP}}/{{totalRArm}}</h1>
         </div>
         <div class="inlineControls">
@@ -58,6 +68,10 @@
     <mat-divider></mat-divider>
     <div class="leftArmContainer">
         <div class="inlineStat">
+            <div class="dmgDots">
+                <mat-icon color="primary" >circle</mat-icon>
+                <mat-icon color="primary" >circle</mat-icon>
+            </div>
             <h1>Left Arm: {{currentLArmHP}}/{{totalLArm}}</h1>
         </div>
         <div class="inlineControls">
@@ -72,6 +86,10 @@
     <mat-divider></mat-divider>
     <div class="rightLegContainer">
         <div class="inlineStat">
+            <div class="dmgDots">
+                <mat-icon color="primary" >circle</mat-icon>
+                <mat-icon color="primary" >circle</mat-icon>
+            </div>
             <h1>Right Leg: {{currentRLegHP}}/{{totalRLeg}}</h1>
         </div>
         <div class="inlineControls">
@@ -86,6 +104,10 @@
     <mat-divider></mat-divider>
     <div class="leftLegContainer">
         <div class="inlineStat">
+            <div class="dmgDots">
+                <mat-icon color="primary" >circle</mat-icon>
+                <mat-icon color="primary" >circle</mat-icon>
+            </div>
             <h1>Left Leg: {{currentLLegHP}}/{{totalLLeg}}</h1>
         </div>
         <div class="inlineControls">
@@ -112,6 +134,10 @@
         </div>
     </div>
     <mat-divider ></mat-divider>
-        
+    <div class="staminaContainer">
+        <div class="inlineStat">
+            <h1>Movement Speed(MS): {{stamina}}</h1>
+        </div>
+    </div>
 </div>
 

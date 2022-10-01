@@ -1,0 +1,27 @@
+
+
+.turns{
+    display: inline-block;
+
+}
+.container{
+    justify-content: center;
+    display: inline;
+}
+.roundsTracker{
+    
+    display:inline-flex;
+    justify-content: center;
+}
+
+.title{
+    text-align: center;
+}
+.nextTurn{
+    margin-top: 0.4vh;
+    margin-left:1vh;
+    float:right;
+}
+.example-form{
+    margin-left: 2vh;
+}

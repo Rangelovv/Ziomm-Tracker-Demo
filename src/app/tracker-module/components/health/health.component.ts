@@ -15,6 +15,7 @@ export class HealthComponent implements OnInit {
   @Input() totalRLeg!:number
   @Input() totalLLeg!:number
   @Input() stamina!:number
+  @Input() ms!:number
 
   currentHealth!:number 
   currentHeadHP!:number 

@@ -1,16 +1,23 @@
 .inlineStat{
-    display: inline-block;
-    margin-right: 1vmax;
+   display: inline-flex;
 }
 
 .inlineControls{
+    display: inline;
     float: right;
 }
 
 
 .statistics{
-    width: 50vh;
+    padding: 1vh;
+    width: 85vh;
+    border:0.15vh solid black;   
 }
 .title{
     text-align: center;
+}
+
+.dmgDots{
+    float: left;
+    margin-right:1vh;
 }

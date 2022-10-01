@@ -1,14 +1,23 @@
-<mat-toolbar>
-    <button mat-raised-button color="primary"> Start Game </button>
-</mat-toolbar>
+
 
 <mat-tab-group mat-stretch-tabs >
     <mat-tab *ngFor="let character of trackingCharacters">
         <ng-template mat-tab-label>
             {{character.name}}
         </ng-template>  
-        <app-health [totalHealth]="character.totalHP" [totalHeadHP]="character.headHP" [totalBodyHP]="character.bodyHP" [totalRArm]="character.rarmHP" [totalLArm]="character.larmHP" [totalRLeg]="character.rlegHP" [totalLLeg]="character.llegHP" [stamina]="character.stamina"></app-health>    
+    
+        <mat-grid-list cols="2">
+            <mat-grid-tile class="appHealth">
+                <app-health [totalHealth]="character.totalHP" [totalHeadHP]="character.headHP" [totalBodyHP]="character.bodyHP" [totalRArm]="character.rarmHP" [totalLArm]="character.larmHP" [totalRLeg]="character.rlegHP" [totalLLeg]="character.llegHP" [stamina]="character.stamina" [ms]="character.movementSpeed"></app-health>   
+            </mat-grid-tile>
+            <mat-divider [vertical]="true"></mat-divider>
+            <mat-grid-tile>
+                <app-turns-tracker></app-turns-tracker>
+            </mat-grid-tile>
+          </mat-grid-list>
+        
     </mat-tab>
+   
 </mat-tab-group>
 
 
