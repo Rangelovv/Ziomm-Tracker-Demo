@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CharacterModel } from '../models/character.model';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,7 @@ export class CharactersService {
   ]
   
 
-  constructor(private firestore:AngularFirestore) { }
+  constructor() { }
 
   returnExistingCharacters(){
     return this.characters;
@@ -30,12 +29,12 @@ export class CharactersService {
  
   
 
- 
-
   addCharacter(character: CharacterModel){
-    const characterObject = {...character}
-    return this.firestore.collection('Characters').add(characterObject)
+    this.characters.push(character)
+    this.charactersCopy.push(character)
   }
+
+ 
   
 
 

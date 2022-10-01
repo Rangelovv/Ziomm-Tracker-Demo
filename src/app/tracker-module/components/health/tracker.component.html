@@ -1,173 +1,189 @@
-<div class="statistics">
-    <div class="title"><h1>Character Statistics</h1></div>
-    <mat-divider></mat-divider>
-    <div class="totalContainer">
-        <div class="inlineStat">
-            <h1>Total health: {{currentHealth}} / {{totalHealth}}</h1>
-        </div>
-        <div class="inlineControls">
-            <button mat-icon-button color="primary">
-                <mat-icon>arrow_upward</mat-icon>
-            </button>
-            <button mat-icon-button color="warn">
-                <mat-icon>arrow_downward</mat-icon>
-            </button>
-        </div>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="headContainer">
-        <div class="inlineStat">
-            <div class="dmgDots">
-                <mat-icon color="primary" >circle</mat-icon>
-                <mat-icon color="primary" >circle</mat-icon>
-                <mat-icon color="primary" >circle</mat-icon>
+<mat-grid-list cols="2" >
+
+    <mat-grid-tile>
+        <div class="statistics">
+            <div class="title"><h1>Character Statistics</h1></div>
+            <mat-divider></mat-divider>
+            <div class="totalContainer">
+                <div class="inlineStat">
+                    <h1>Total health: {{currentHealth}} / {{totalHealth}}</h1>
+                </div>
+                
             </div>
-            <h1>Head: {{currentHeadHP}} / {{totalHeadHP}}</h1>
-        </div>
-        <div class="inlineControls">
-            <button mat-icon-button color="primary">
-                <mat-icon>arrow_upward</mat-icon>
-            </button>
-            <button mat-icon-button color="warn">
-                <mat-icon>arrow_downward</mat-icon>
-            </button>
-        </div>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="headContainer">
-        <div class="inlineStat">
-            <h1>Body: {{currentBodyHP}} / {{totalBodyHP}}</h1>
-        </div>
-        <div class="inlineControls">
-            <button mat-icon-button color="primary">
-                <mat-icon>arrow_upward</mat-icon>
-            </button>
-            <button mat-icon-button color="warn">
-                <mat-icon>arrow_downward</mat-icon>
-            </button>
-        </div>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="rightArmContainer">
-        <div class="inlineStat">
-            <div class="dmgDots">
-                <mat-icon color="primary" >circle</mat-icon>
-                <mat-icon color="primary" >circle</mat-icon>
+            <mat-divider></mat-divider>
+            <div class="headContainer">
+                <div class="inlineStat">
+                    <div class="dmgDots">
+                        <mat-icon *ngIf="!headBrokenFirst; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon *ngIf="!headBrokenSecond; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon *ngIf="!headBrokenThird; else broken" color="primary" >circle</mat-icon>
+                        
+                    </div>
+                    <h1>Head: {{currentHeadHP}} / {{totalHeadHP}}</h1>
+                </div>
+                <div class="inlineControls">
+                    <button *ngIf="!headFinished; else disabledUp" mat-icon-button color="primary">
+                        <mat-icon>arrow_upward</mat-icon>
+                    </button>
+                    <button *ngIf="!headFinished; else disabledDown" (click)="headDown()" mat-icon-button color="warn">
+                        <mat-icon>arrow_downward</mat-icon>
+                    </button>
+                </div>
             </div>
-            <h1>Right Arm: {{currentRArmHP}}/{{totalRArm}}</h1>
-        </div>
-        <div class="inlineControls">
-            <button mat-icon-button color="primary">
-                <mat-icon>arrow_upward</mat-icon>
-            </button>
-            <button mat-icon-button color="warn">
-                <mat-icon>arrow_downward</mat-icon>
-            </button>
-        </div>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="leftArmContainer">
-        <div class="inlineStat">
-            <div class="dmgDots">
-                <mat-icon color="primary" >circle</mat-icon>
-                <mat-icon color="primary" >circle</mat-icon>
+            <mat-divider></mat-divider>
+            <div class="headContainer">
+                <div class="inlineStat">
+                    <h1>Body: {{currentBodyHP}} / {{totalBodyHP}}</h1>
+                </div>
+                <div class="inlineControls">
+                    <button *ngIf="!bodyFinished; else disabledUp" mat-icon-button color="primary">
+                        <mat-icon>arrow_upward</mat-icon>
+                    </button>
+                    <button *ngIf="!bodyFinished; else disabledDown" (click)="bodyDown()" mat-icon-button color="warn">
+                        <mat-icon>arrow_downward</mat-icon>
+                    </button>
+                </div>
             </div>
-            <h1>Left Arm: {{currentLArmHP}}/{{totalLArm}}</h1>
-        </div>
-        <div class="inlineControls">
-            <button mat-icon-button color="primary">
-                <mat-icon>arrow_upward</mat-icon>
-            </button>
-            <button mat-icon-button color="warn">
-                <mat-icon>arrow_downward</mat-icon>
-            </button>
-        </div>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="rightLegContainer">
-        <div class="inlineStat">
-            <div class="dmgDots">
-                <mat-icon color="primary" >circle</mat-icon>
-                <mat-icon color="primary" >circle</mat-icon>
+            <mat-divider></mat-divider>
+            <div class="rightArmContainer">
+                <div class="inlineStat">
+                    <div class="dmgDots">
+                        <mat-icon *ngIf="!rarmBrokenFirst; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon *ngIf="!rarmBrokenSecond; else broken" color="primary" >circle</mat-icon>
+                    </div>
+                    <h1>Right Arm: {{currentRArmHP}}/{{totalRArm}}</h1>
+                </div>
+                <div class="inlineControls">
+                    <button *ngIf="!rarmFinished; else disabledUp" mat-icon-button color="primary">
+                        <mat-icon>arrow_upward</mat-icon>
+                    </button>
+                    <button *ngIf="!rarmFinished; else disabledDown" (click)="rarmDown()" mat-icon-button color="warn">
+                        <mat-icon>arrow_downward</mat-icon>
+                    </button>
+                </div>
             </div>
-            <h1>Right Leg: {{currentRLegHP}}/{{totalRLeg}}</h1>
-        </div>
-        <div class="inlineControls">
-            <button mat-icon-button color="primary">
-                <mat-icon>arrow_upward</mat-icon>
-            </button>
-            <button mat-icon-button color="warn">
-                <mat-icon>arrow_downward</mat-icon>
-            </button>
-        </div>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="leftLegContainer">
-        <div class="inlineStat">
-            <div class="dmgDots">
-                <mat-icon color="primary" >circle</mat-icon>
-                <mat-icon color="primary" >circle</mat-icon>
+            <mat-divider></mat-divider>
+            <div class="leftArmContainer">
+                <div class="inlineStat">
+                    <div class="dmgDots">
+                        <mat-icon *ngIf="!larmBrokenFirst; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon *ngIf="!larmBrokenSecond; else broken" color="primary" >circle</mat-icon>
+                    </div>
+                    <h1>Left Arm: {{currentLArmHP}}/{{totalLArm}}</h1>
+                </div>
+                <div class="inlineControls">
+                    <button *ngIf="!larmFinished; else disabledUp" mat-icon-button color="primary">
+                        <mat-icon>arrow_upward</mat-icon>
+                    </button>
+                    <button *ngIf="!larmFinished; else disabledDown" (click)="larmDown()" mat-icon-button color="warn">
+                        <mat-icon>arrow_downward</mat-icon>
+                    </button>
+                </div>
             </div>
-            <h1>Left Leg: {{currentLLegHP}}/{{totalLLeg}}</h1>
+            <mat-divider></mat-divider>
+            <div class="rightLegContainer">
+                <div class="inlineStat">
+                    <div class="dmgDots">
+                        <mat-icon *ngIf="!rlegBrokenFirst; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon *ngIf="!rlegBrokenSecond; else broken" color="primary" >circle</mat-icon>
+                    </div>
+                    <h1>Right Leg: {{currentRLegHP}}/{{totalRLeg}}</h1>
+                </div>
+                <div class="inlineControls">
+                    <button *ngIf="!rlegFinished; else disabledUp" mat-icon-button color="primary">
+                        <mat-icon>arrow_upward</mat-icon>
+                    </button>
+                    <button *ngIf="!rlegFinished; else disabledDown" (click)="rlegDown()" mat-icon-button color="warn">
+                        <mat-icon>arrow_downward</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="leftLegContainer">
+                <div class="inlineStat">
+                    <div class="dmgDots">
+                        <mat-icon *ngIf="!llegBrokenFirst; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon *ngIf="!llegBrokenSecond; else broken" color="primary" >circle</mat-icon>
+                    </div>
+                    <h1>Left Leg: {{currentLLegHP}}/{{totalLLeg}}</h1>
+                </div>
+                <div class="inlineControls">
+                    <button *ngIf="!llegFinished; else disabledUp" mat-icon-button color="primary">
+                        <mat-icon>arrow_upward</mat-icon>
+                    </button>
+                    <button *ngIf="!llegFinished; else disabledDown" (click)="llegDown()" mat-icon-button color="warn">
+                        <mat-icon>arrow_downward</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="staminaContainer">
+                <div class="inlineStat">
+                    <h1>Stamina: {{currentStamina}}/{{stamina}}</h1>
+                </div>
+                <div class="inlineControls">
+                    <button (click)="staminaUp()" mat-icon-button color="primary">
+                        <mat-icon>arrow_upward</mat-icon>
+                    </button>
+                    <button *ngIf="!staminaFinished; else disabledDown" (click)="staminaDown()" mat-icon-button color="warn">
+                        <mat-icon>arrow_downward</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <mat-divider ></mat-divider>
+            <div class="staminaContainer">
+                <div class="inlineStat">
+                    <h1>Movement Speed(MS): {{stamina}}</h1>
+                </div>
+            </div>
+        </div> 
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <div class="trackerContainer">
+            <div class="title">
+                <h1>Action Points Tracker</h1>
+            </div>
+            <div class="container">
+                <div class="turns">
+                    <h1 >Turn {{turn}}</h1>
+                </div>
+                <div class="roundsTracker">
+                    <form class="example-form" [formGroup]="apForm">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Round 1</mat-label>
+                        <input  #newItem type="number" matInput formControlName="roundOne">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Round 2</mat-label>
+                        <input  type="number" matInput formControlName="roundTwo">
+                    </mat-form-field>
+                    </form>
+                    <div class="nextTurn">
+                        <button class="nextTurn" mat-mini-fab color="primary" (click)="onSubmit()">
+                            <mat-icon >navigate_next</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="inlineControls">
-            <button mat-icon-button color="primary">
-                <mat-icon>arrow_upward</mat-icon>
-            </button>
-            <button mat-icon-button color="warn">
-                <mat-icon>arrow_downward</mat-icon>
-            </button>
-        </div>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="staminaContainer">
-        <div class="inlineStat">
-            <h1>Stamina: {{currentStamina}}/{{stamina}}</h1>
-        </div>
-        <div class="inlineControls">
-            <button mat-icon-button color="primary">
-                <mat-icon>arrow_upward</mat-icon>
-            </button>
-            <button mat-icon-button color="warn">
-                <mat-icon>arrow_downward</mat-icon>
-            </button>
-        </div>
-    </div>
-    <mat-divider ></mat-divider>
-    <div class="staminaContainer">
-        <div class="inlineStat">
-            <h1>Movement Speed(MS): {{stamina}}</h1>
-        </div>
-    </div>
-</div>
+    </mat-grid-tile>
+    
+  </mat-grid-list>
 
 
-<div class="trackerContainer">
-    <div class="title">
-        <h1>Action Points Tracker</h1>
-    </div>
-    <div class="container">
-        <div class="turns">
-            <h1 >Turn {{turn}}</h1>
-        </div>
-        <div class="roundsTracker">
-            <form class="example-form" [formGroup]="apForm">
-            <mat-form-field appearance="fill">
-                <mat-label>Round 1</mat-label>
-                <input  #newItem type="number" matInput formControlName="roundOne">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Round 2</mat-label>
-                <input  type="number" matInput formControlName="roundTwo">
-            </mat-form-field>
-            </form>
-            <div class="nextTurn">
-                <button class="nextTurn" mat-mini-fab color="primary" (click)="onSubmit()">
-                    <mat-icon >navigate_next</mat-icon>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+
+
+<ng-template #disabledDown>
+    <button disabled="" mat-icon-button color="warn">
+        <mat-icon>arrow_downward</mat-icon>
+    </button>
+</ng-template>
+<ng-template #disabledUp>
+    <button disabled="" mat-icon-button color="warn">
+        <mat-icon>arrow_upward</mat-icon>
+    </button>
+</ng-template>
+<ng-template #broken><mat-icon color="warn" >circle</mat-icon></ng-template>
 
 
