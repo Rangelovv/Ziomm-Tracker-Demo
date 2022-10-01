@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HealthComponent } from './health.component';
+import { HealthComponent } from './tracker.component';
 
 describe('HealthComponent', () => {
   let component: HealthComponent;

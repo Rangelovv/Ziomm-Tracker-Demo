@@ -1,0 +1,57 @@
+.inlineStat{
+   display: inline-flex;
+}
+
+.inlineControls{
+    display: inline;
+    float: right;
+}
+
+
+.statistics{
+    padding: 1vh;
+    width: 85vh;
+    border:0.15vh solid black;   
+    display: inline-block;
+}
+.title{
+    text-align: center;
+}
+
+.dmgDots{
+    float: left;
+    margin-right:1vh;
+}
+
+
+.turns{
+    display: inline-block;
+
+}
+.container{
+    justify-content: center;
+    display: inline;
+}
+.roundsTracker{
+    
+    display:inline-flex;
+    justify-content: center;
+}
+
+.title{
+    text-align: center;
+}
+.nextTurn{
+    margin-top: 0.4vh;
+    margin-left:1vh;
+    float:right;
+}
+.example-form{
+    margin-left: 2vh;
+}
+
+.trackerContainer{
+    justify-content: center;
+    display: inline-block;
+
+}

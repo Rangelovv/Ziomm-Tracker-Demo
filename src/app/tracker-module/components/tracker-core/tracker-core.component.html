@@ -7,13 +7,7 @@
         </ng-template>  
     
         <mat-grid-list cols="2">
-            <mat-grid-tile class="appHealth">
-                <app-health [totalHealth]="character.totalHP" [totalHeadHP]="character.headHP" [totalBodyHP]="character.bodyHP" [totalRArm]="character.rarmHP" [totalLArm]="character.larmHP" [totalRLeg]="character.rlegHP" [totalLLeg]="character.llegHP" [stamina]="character.stamina" [ms]="character.movementSpeed"></app-health>   
-            </mat-grid-tile>
-            <mat-divider [vertical]="true"></mat-divider>
-            <mat-grid-tile>
-                <app-turns-tracker></app-turns-tracker>
-            </mat-grid-tile>
+                <app-tracker [totalHealth]="character.totalHP" [totalHeadHP]="character.headHP" [totalBodyHP]="character.bodyHP" [totalRArm]="character.rarmHP" [totalLArm]="character.larmHP" [totalRLeg]="character.rlegHP" [totalLLeg]="character.llegHP" [stamina]="character.stamina" [ms]="character.movementSpeed"></app-tracker>   
           </mat-grid-list>
         
     </mat-tab>

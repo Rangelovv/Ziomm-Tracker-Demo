@@ -4,18 +4,20 @@ import { TrackerCoreComponent } from './components/tracker-core/tracker-core.com
 import { TrackerRoutingModule } from './routing/tracker/tracker-routing.module';
 import { MaterialModule } from '../material-module/material.module';
 import { CharactersService } from '../characters-module/services/characters.service';
-import { HealthComponent } from './components/health/health.component';
 import { TurnsTrackerComponent } from './components/turns-tracker/turns-tracker.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TrackerComponent } from './components/health/tracker.component';
 @NgModule({
   declarations: [
     TrackerCoreComponent,
-    HealthComponent,
+    TrackerComponent,
     TurnsTrackerComponent
   ],
   imports: [
     CommonModule,
     TrackerRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   
 })

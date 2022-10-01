@@ -13,15 +13,18 @@ export class TrackerCoreComponent implements OnInit {
   trackingCharacters!: CharacterModel[];
 
   constructor(private trcharService:CharactersService) { }
-
+  stamina:number = 10
 
   ngOnInit(): void {
 
       //getting the charachters
       this.trackingCharacters = this.trcharService.returnActiveCharacters();
 
-  
+    
       
   }
+    setSum(data:any){
+      this.stamina = data
+    }
     
 }
