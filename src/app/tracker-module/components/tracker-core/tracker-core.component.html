@@ -6,11 +6,8 @@
     <mat-tab *ngFor="let character of trackingCharacters">
         <ng-template mat-tab-label>
             {{character.name}}
-        </ng-template>
-        <button (click)="hpUp()">plus</button>
-    <h2>{{currentHealth}} / {{health}}</h2>
-    <button (click)="hpDown()">minus</button>
-
+        </ng-template>  
+        <app-health [totalHealth]="character.totalHP" [totalHeadHP]="character.headHP" [totalBodyHP]="character.bodyHP" [totalRArm]="character.rarmHP" [totalLArm]="character.larmHP" [totalRLeg]="character.rlegHP" [totalLLeg]="character.llegHP" [stamina]="character.stamina"></app-health>    
     </mat-tab>
 </mat-tab-group>
 

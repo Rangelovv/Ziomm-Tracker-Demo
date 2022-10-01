@@ -1,0 +1,16 @@
+.inlineStat{
+    display: inline-block;
+    margin-right: 1vmax;
+}
+
+.inlineControls{
+    float: right;
+}
+
+
+.statistics{
+    width: 50vh;
+}
+.title{
+    text-align: center;
+}

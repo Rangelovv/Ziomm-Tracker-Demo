@@ -11,7 +11,7 @@ import { CoreComponent } from './components/core/core.component';
   declarations: [
     AppComponent,
     LandingComponent,
-    CoreComponent
+    CoreComponent,
   ],
   imports: [
     BrowserModule,

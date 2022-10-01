@@ -4,9 +4,11 @@ import { TrackerCoreComponent } from './components/tracker-core/tracker-core.com
 import { TrackerRoutingModule } from './routing/tracker/tracker-routing.module';
 import { MaterialModule } from '../material-module/material.module';
 import { CharactersService } from '../characters-module/services/characters.service';
+import { HealthComponent } from './components/health/health.component';
 @NgModule({
   declarations: [
-    TrackerCoreComponent
+    TrackerCoreComponent,
+    HealthComponent
   ],
   imports: [
     CommonModule,

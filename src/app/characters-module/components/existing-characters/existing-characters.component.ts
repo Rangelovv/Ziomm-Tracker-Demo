@@ -12,7 +12,7 @@ export class ExistingCharactersComponent implements OnInit {
   constructor(private charService:CharactersService) { }
 
   ngOnInit(): void {
-    this.characters = this.charService.returnCharacters();
+    this.characters = this.charService.returnExistingCharacters();
   }
 
 }
