@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ziomm-app": {
+      "hosting": {
+        "ZiommApp": [
+          "ziomm-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ziomm-app"
+  }
+}
