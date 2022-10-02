@@ -22,7 +22,7 @@
                     <h1>Head: {{currentHeadHP}} / {{totalHeadHP}}</h1>
                 </div>
                 <div class="inlineControls">
-                    <button *ngIf="!headFinished; else disabledUp" mat-icon-button color="primary">
+                    <button (click)="headUp()" *ngIf="!headFinished; else disabledUp" mat-icon-button color="primary">
                         <mat-icon>arrow_upward</mat-icon>
                     </button>
                     <button *ngIf="!headFinished; else disabledDown" (click)="headDown()" mat-icon-button color="warn">
@@ -36,7 +36,7 @@
                     <h1>Body: {{currentBodyHP}} / {{totalBodyHP}}</h1>
                 </div>
                 <div class="inlineControls">
-                    <button *ngIf="!bodyFinished; else disabledUp" mat-icon-button color="primary">
+                    <button (click)="bodyUp()" *ngIf="!bodyFinished; else disabledUp" mat-icon-button color="primary">
                         <mat-icon>arrow_upward</mat-icon>
                     </button>
                     <button *ngIf="!bodyFinished; else disabledDown" (click)="bodyDown()" mat-icon-button color="warn">
@@ -54,7 +54,7 @@
                     <h1>Right Arm: {{currentRArmHP}}/{{totalRArm}}</h1>
                 </div>
                 <div class="inlineControls">
-                    <button *ngIf="!rarmFinished; else disabledUp" mat-icon-button color="primary">
+                    <button (click)="rarmUp()" *ngIf="!rarmFinished; else disabledUp" mat-icon-button color="primary">
                         <mat-icon>arrow_upward</mat-icon>
                     </button>
                     <button *ngIf="!rarmFinished; else disabledDown" (click)="rarmDown()" mat-icon-button color="warn">
@@ -72,7 +72,7 @@
                     <h1>Left Arm: {{currentLArmHP}}/{{totalLArm}}</h1>
                 </div>
                 <div class="inlineControls">
-                    <button *ngIf="!larmFinished; else disabledUp" mat-icon-button color="primary">
+                    <button (click)="larmUp()" *ngIf="!larmFinished; else disabledUp" mat-icon-button color="primary">
                         <mat-icon>arrow_upward</mat-icon>
                     </button>
                     <button *ngIf="!larmFinished; else disabledDown" (click)="larmDown()" mat-icon-button color="warn">
@@ -90,7 +90,7 @@
                     <h1>Right Leg: {{currentRLegHP}}/{{totalRLeg}}</h1>
                 </div>
                 <div class="inlineControls">
-                    <button *ngIf="!rlegFinished; else disabledUp" mat-icon-button color="primary">
+                    <button (click)="rlegUp()" *ngIf="!rlegFinished; else disabledUp" mat-icon-button color="primary">
                         <mat-icon>arrow_upward</mat-icon>
                     </button>
                     <button *ngIf="!rlegFinished; else disabledDown" (click)="rlegDown()" mat-icon-button color="warn">
@@ -108,7 +108,7 @@
                     <h1>Left Leg: {{currentLLegHP}}/{{totalLLeg}}</h1>
                 </div>
                 <div class="inlineControls">
-                    <button *ngIf="!llegFinished; else disabledUp" mat-icon-button color="primary">
+                    <button (click)="llegUp()" *ngIf="!llegFinished; else disabledUp" mat-icon-button color="primary">
                         <mat-icon>arrow_upward</mat-icon>
                     </button>
                     <button *ngIf="!llegFinished; else disabledDown" (click)="llegDown()" mat-icon-button color="warn">
@@ -122,8 +122,8 @@
                     <h1>Stamina: {{currentStamina}}/{{stamina}}</h1>
                 </div>
                 <div class="inlineControls">
-                    <button (click)="staminaUp()" mat-icon-button color="primary">
-                        <mat-icon>arrow_upward</mat-icon>
+                    <button mat-icon-button color="primary">
+                        <mat-icon *ngIf="!staminaFinished; else disabledUp" (click)="staminaUp()">arrow_upward</mat-icon>
                     </button>
                     <button *ngIf="!staminaFinished; else disabledDown" (click)="staminaDown()" mat-icon-button color="warn">
                         <mat-icon>arrow_downward</mat-icon>
