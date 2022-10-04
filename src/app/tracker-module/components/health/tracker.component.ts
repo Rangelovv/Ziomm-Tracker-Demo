@@ -81,6 +81,8 @@ export class TrackerComponent implements OnInit {
     msFinished:boolean = false
     msFull:boolean = true
 
+    healthFinished:boolean = false
+    healthFull:boolean = true
 
 
   constructor() { }
@@ -132,9 +134,7 @@ export class TrackerComponent implements OnInit {
       this.currentMS = this.currentMS / 2
     }
 
-  
-
-  }
+ }
 
   
   onSubmit(){
@@ -298,6 +298,27 @@ export class TrackerComponent implements OnInit {
     }
     if(this.currentMS >= 1){
       this.msFinished = false
+    }
+  }
+
+ totalHealthDown(){
+    this.currentHealth = this.currentHealth - 1
+    this.healthFull = false
+    if(this.currentHealth == 0){
+      this.currentHealth = 0
+      this.healthFinished = true
+    }
+    if(this.currentHealth >= 1){
+      this.healthFinished = false
+    }
+  }
+
+  totalHealthUp(){
+    if(this.healthFull == false){
+      this.currentHealth = this.currentHealth + 1
+    }
+    if(this.currentHealth == this.totalHealth){
+      this.healthFull = true
     }
   }
 
