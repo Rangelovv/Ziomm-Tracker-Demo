@@ -1,4 +1,4 @@
-<mat-grid-list cols="2" >
+<mat-grid-list cols="2" rowHeight="100vh">
 
     <mat-grid-tile>
         <div class="statistics">
@@ -7,6 +7,14 @@
             <div class="totalContainer">
                 <div class="inlineStat">
                     <h1>Total health: {{currentHealth}} / {{totalHealth}}</h1>
+                </div>
+                <div class="inlineControls">
+                    <button mat-icon-button color="primary">
+                        <mat-icon *ngIf="!staminaFinished; else disabledUp" (click)="staminaUp()">arrow_upward</mat-icon>
+                    </button>
+                    <button *ngIf="!staminaFinished; else disabledDown" (click)="staminaDown()" mat-icon-button color="warn">
+                        <mat-icon>arrow_downward</mat-icon>
+                    </button>
                 </div>
                 
             </div>
@@ -133,7 +141,15 @@
             <mat-divider ></mat-divider>
             <div class="staminaContainer">
                 <div class="inlineStat">
-                    <h1>Movement Speed(MS): {{stamina}}</h1>
+                    <h1>Movement Speed(MS): {{currentMS}}</h1>
+                </div>
+                <div class="inlineControls">
+                    <button mat-icon-button color="primary">
+                        <mat-icon *ngIf="!staminaFinished; else disabledUp" (click)="staminaUp()">arrow_upward</mat-icon>
+                    </button>
+                    <button *ngIf="!staminaFinished; else disabledDown" (click)="staminaDown()" mat-icon-button color="warn">
+                        <mat-icon>arrow_downward</mat-icon>
+                    </button>
                 </div>
             </div>
         </div> 

@@ -26,6 +26,7 @@ export class TrackerComponent implements OnInit {
   currentRLegHP!:number 
   currentLLegHP!:number 
   currentStamina!:number 
+  currentMS!:number
 
   turn:number = 1
   roundOne!:number
@@ -78,6 +79,7 @@ export class TrackerComponent implements OnInit {
     staminaFull:boolean = true
 
 
+
   constructor() { }
 
 
@@ -97,6 +99,8 @@ export class TrackerComponent implements OnInit {
     this.currentRLegHP = this.totalRLeg
     this.currentLLegHP = this.totalLLeg
     this.currentStamina = this.stamina
+    this.currentMS = this.ms
+
 
   
     if(this.currentStamina == this.stamina){
@@ -121,6 +125,11 @@ export class TrackerComponent implements OnInit {
       this.llegFull = true
     }
 
+    if(this.rlegBrokenFirst == true){
+      this.currentMS = this.currentMS / 2
+    }
+
+  
 
   }
 
@@ -240,6 +249,7 @@ export class TrackerComponent implements OnInit {
     if(this.currentRLegHP >= 1){
       this.rlegFull = false
     }
+ 
   }
 
   llegDown(){
@@ -336,6 +346,7 @@ export class TrackerComponent implements OnInit {
       this.rlegFull = true
     }
   }
+  
   
 
 }
