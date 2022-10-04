@@ -145,9 +145,9 @@
                 </div>
                 <div class="inlineControls">
                     <button mat-icon-button color="primary">
-                        <mat-icon *ngIf="!staminaFinished; else disabledUp" (click)="staminaUp()">arrow_upward</mat-icon>
+                        <mat-icon *ngIf="!msFinished; else disabledUp" (click)="msUp()">arrow_upward</mat-icon>
                     </button>
-                    <button *ngIf="!staminaFinished; else disabledDown" (click)="staminaDown()" mat-icon-button color="warn">
+                    <button *ngIf="!msFinished; else disabledDown" (click)="msDown()" mat-icon-button color="warn">
                         <mat-icon>arrow_downward</mat-icon>
                     </button>
                 </div>

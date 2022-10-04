@@ -78,6 +78,9 @@ export class TrackerComponent implements OnInit {
     staminaFinished:boolean = false
     staminaFull:boolean = true
 
+    msFinished:boolean = false
+    msFull:boolean = true
+
 
 
   constructor() { }
@@ -235,7 +238,7 @@ export class TrackerComponent implements OnInit {
     if(this.currentRLegHP == 0){
       this.currentRLegHP = this.totalRLeg
       this.rlegBroken = this.rlegBroken + 1
-      console.log(this.rlegBroken)
+      this.currentMS = this.currentMS / 2
      }
      if(this.rlegBroken == 1){
       this.rlegBrokenFirst = true
@@ -257,7 +260,7 @@ export class TrackerComponent implements OnInit {
     if(this.currentLLegHP == 0){
       this.currentLLegHP = this.totalLLeg
       this.llegBroken = this.llegBroken + 1
-      console.log(this.llegBroken)
+      this.currentMS = this.currentMS / 2
      }
      if(this.llegBroken == 1){
       this.llegBrokenFirst = true
@@ -285,6 +288,28 @@ export class TrackerComponent implements OnInit {
     }
 
   }
+
+  msDown(){
+    this.currentMS = this.currentMS - 1
+    this.msFull = false
+    if(this.currentMS == 0){
+      this.currentMS = 0
+      this.msFinished = true
+    }
+    if(this.currentMS >= 1){
+      this.msFinished = false
+    }
+  }
+
+  msUp(){
+    if(this.msFull == false){
+      this.currentMS = this.currentMS + 1
+    }
+    if(this.currentMS == this.ms){
+      this.msFull = true
+    }
+  }
+
   staminaUp(){
     if(this.staminaFull == false){
       this.currentStamina = this.currentStamina + 1
