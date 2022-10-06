@@ -76,6 +76,10 @@ export class TrackerComponent implements OnInit {
 
 
     staminaFinished:boolean = false
+    staminaFirst:boolean = false
+    staminaSecond:boolean = false
+    staminaThird:boolean = false
+    staminaFourth:boolean = false
     staminaFull:boolean = true
 
     msFinished:boolean = false
@@ -84,6 +88,7 @@ export class TrackerComponent implements OnInit {
     healthFinished:boolean = false
     healthFull:boolean = true
 
+    currentState:string = "Normal"
 
   constructor() { }
 
@@ -280,9 +285,24 @@ export class TrackerComponent implements OnInit {
     this.staminaFull = false
     if(this.currentStamina == 0){
       this.currentStamina = 0
+      this.staminaFourth = true
       this.staminaFinished = true
-    }
+      this.currentState = "Black-out (incapacitated for 1 turn.)"
 
+    }
+    if(this.currentStamina == 5){
+      this.staminaFirst = true
+      this.currentState = "Winded (reduces all stats by 1)"
+    }
+    if(this.currentStamina == 3){
+      this.staminaSecond = true
+      this.currentState = "Tired  (reduces all stats by 3)"
+    }
+    if(this.currentStamina == 1){
+      this.staminaThird = true
+      this.currentState = "Fatigued (reduces all stats by 6)"
+
+    }
     if(this.currentStamina >= 1){
       this.staminaFinished = false
     }
@@ -338,6 +358,32 @@ export class TrackerComponent implements OnInit {
     if(this.currentStamina == this.stamina){
       this.staminaFull = true
     }
+    if(this.stamina > 0){
+      this.staminaFinished = false
+    }
+  
+    if(this.currentStamina >= 0){
+      this.staminaFourth = false
+      this.currentState = "Fatigued (reduces all stats by 6)"
+
+    }
+    if(this.currentStamina > 1){
+      this.staminaThird = false
+      this.currentState = "Tired  (reduces all stats by 3)"
+
+    }
+    if(this.currentStamina > 3){
+      this.staminaSecond = false
+      this.currentState = "Winded (reduces all stats by 1)"
+
+    }
+    if(this.currentStamina > 5){
+      this.staminaFirst = false
+      this.currentState = "Normal"
+
+    }
+    
+    
   }
 
   headUp(){

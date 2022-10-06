@@ -1,3 +1,11 @@
+
+.statistics{
+    padding: 1vh;
+    width: 85vh;
+    border:0.15vh solid black;   
+    display: inline-block;
+}
+
 .inlineStat{
    display: inline-flex;
 }
@@ -7,13 +15,6 @@
     float: right;
 }
 
-
-.statistics{
-    padding: 1vh;
-    width: 85vh;
-    border:0.15vh solid black;   
-    display: inline-block;
-}
 .title{
     text-align: center;
 }
@@ -26,6 +27,8 @@
 
 .turns{
     display: inline-block;
+    position: relative;
+
 
 }
 .container{
@@ -33,18 +36,24 @@
     display: inline;
 }
 .roundsTracker{
-    
     display:inline-flex;
     justify-content: center;
+    position: relative;
+
+
 }
 
 .title{
     text-align: center;
+    position: relative;
 }
 .nextTurn{
     margin-top: 0.4vh;
     margin-left:1vh;
     float:right;
+    position: relative;
+
+
 }
 .example-form{
     margin-left: 2vh;
@@ -53,5 +62,11 @@
 .trackerContainer{
     justify-content: center;
     display: inline-block;
+    position: relative;
 
+
+}
+
+.mat-grid-list{
+    margin-top: 0px;
 }
