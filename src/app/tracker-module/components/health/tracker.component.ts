@@ -37,6 +37,11 @@ export class TrackerComponent implements OnInit {
   //Modify
     bodyFinished:boolean = false
     bodyFull:boolean = true
+    bodyFirst:boolean = false
+    bodySecond:boolean = false
+    bodyBroken:number = 0
+
+
 
 
     headBroken:number = 0
@@ -158,10 +163,19 @@ export class TrackerComponent implements OnInit {
 
   bodyDown(){
     this.currentBodyHP = this.currentBodyHP - 1
-    this.currentHealth = this.currentHealth - 1
+
     if(this.currentBodyHP == 0){
-      this.currentBodyHP = 0
+      this.currentBodyHP = this.totalBodyHP
+      this.bodyBroken = this.bodyBroken + 1
+    }
+    if(this.bodyBroken == 1){
+      this.bodyFirst = true
+    }
+    if(this.bodyBroken == 2){
+      this.bodySecond = true
       this.bodyFinished = true
+      this.currentHealth = this.currentHealth - this.totalBodyHP
+      this.currentBodyHP = 0
     }
     if(this.currentBodyHP >= 1){
       this.bodyFull = false
@@ -174,7 +188,6 @@ export class TrackerComponent implements OnInit {
     if(this.currentHeadHP == 0){
       this.currentHeadHP = this.totalHeadHP
       this.headBroken = this.headBroken + 1
-      console.log(this.headBroken)
      }
      if(this.headBroken == 1){
       this.headBrokenFirst = true

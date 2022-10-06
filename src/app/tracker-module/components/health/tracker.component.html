@@ -39,11 +39,11 @@
                 </div>
             </div>
             <mat-divider></mat-divider>
-            <div class="headContainer">
+            <div class="bodyContainer">
                 <div class="inlineStat">
                     <div class="dmgDots">
-                        <mat-icon *ngIf="!rarmBrokenFirst; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon *ngIf="!rarmBrokenSecond; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon *ngIf="!bodyFirst; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon *ngIf="!bodySecond; else broken" color="primary" >circle</mat-icon>
                     </div>
                     <h1>Body: {{currentBodyHP}} / {{totalBodyHP}}</h1>
                 </div>
