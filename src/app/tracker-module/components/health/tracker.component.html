@@ -22,9 +22,9 @@
             <div class="headContainer">
                 <div class="inlineStat">
                     <div class="dmgDots">
-                        <mat-icon *ngIf="!headBrokenFirst; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon *ngIf="!headBrokenSecond; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon *ngIf="!headBrokenThird; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="First Concussion  (-1 to all rolls)" *ngIf="!headBrokenFirst; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Second Concussion  (-3 to all rolls)" *ngIf="!headBrokenSecond; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Third Concussion  (fall unconsciouss)" *ngIf="!headBrokenThird; else broken" color="primary" >circle</mat-icon>
                         
                     </div>
                     <h1>Head: {{currentHeadHP}} / {{totalHeadHP}}</h1>
@@ -60,8 +60,8 @@
             <div class="rightArmContainer">
                 <div class="inlineStat">
                     <div class="dmgDots">
-                        <mat-icon *ngIf="!rarmBrokenFirst; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon *ngIf="!rarmBrokenSecond; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="First Right Arm Injury (lowers all actions with that arm)" *ngIf="!rarmBrokenFirst; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Second Right Arm Injury (makes the arm unusable)"*ngIf="!rarmBrokenSecond; else broken" color="primary" >circle</mat-icon>
                     </div>
                     <h1>Right Arm: {{currentRArmHP}}/{{totalRArm}}</h1>
                 </div>
@@ -78,8 +78,8 @@
             <div class="leftArmContainer">
                 <div class="inlineStat">
                     <div class="dmgDots">
-                        <mat-icon *ngIf="!larmBrokenFirst; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon *ngIf="!larmBrokenSecond; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="First Left Arm Injury (lowers all actions with that arm)" *ngIf="!larmBrokenFirst; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Second Left Arm Injury (makes the arm unusable)" *ngIf="!larmBrokenSecond; else broken" color="primary" >circle</mat-icon>
                     </div>
                     <h1>Left Arm: {{currentLArmHP}}/{{totalLArm}}</h1>
                 </div>
@@ -96,8 +96,8 @@
             <div class="rightLegContainer">
                 <div class="inlineStat">
                     <div class="dmgDots">
-                        <mat-icon *ngIf="!rlegBrokenFirst; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon *ngIf="!rlegBrokenSecond; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="First Right Leg Injury (lowers ms by 1/4)" *ngIf="!rlegBrokenFirst; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Second Right Leg Injury (lowers ms by 1/4)" *ngIf="!rlegBrokenSecond; else broken" color="primary" >circle</mat-icon>
                     </div>
                     <h1>Right Leg: {{currentRLegHP}}/{{totalRLeg}}</h1>
                 </div>
@@ -114,8 +114,8 @@
             <div class="leftLegContainer">
                 <div class="inlineStat">
                     <div class="dmgDots">
-                        <mat-icon *ngIf="!llegBrokenFirst; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon *ngIf="!llegBrokenSecond; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="First Left Leg Injury (lowers ms by 1/4)" *ngIf="!llegBrokenFirst; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Second Left Leg Injury (lowers ms by 1/4)" *ngIf="!llegBrokenSecond; else broken" color="primary" >circle</mat-icon>
                     </div>
                     <h1>Left Leg: {{currentLLegHP}}/{{totalLLeg}}</h1>
                 </div>
@@ -132,10 +132,10 @@
             <div class="staminaContainer">
                 <div class="inlineStat">
                     <div class="dmgDots">
-                        <mat-icon *ngIf="!staminaFirst; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon *ngIf="!staminaSecond; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon *ngIf="!staminaThird; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon *ngIf="!staminaFourth; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Winded" *ngIf="!staminaFirst; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Tired" *ngIf="!staminaSecond; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Fatigued" *ngIf="!staminaThird; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Black-out" *ngIf="!staminaFourth; else broken" color="primary" >circle</mat-icon>
                     </div>
                     <h1>Stamina: {{currentStamina}}/{{stamina}}</h1>
                 </div>
