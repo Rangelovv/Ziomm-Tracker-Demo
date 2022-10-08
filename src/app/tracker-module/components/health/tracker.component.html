@@ -1,6 +1,39 @@
-<mat-grid-list cols="2" rowHeight="80vh">
+<div style=" padding: 1% 20%;">
+    
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>Action Points Tracker</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="trackerContainer">
+        <div class="container">
+            <div class="turns">
+                <h1 >Turn {{turn}}</h1>
+            </div>
+            <div class="roundsTracker">
+                <form class="example-form" [formGroup]="apForm">
+                <mat-form-field appearance="fill">
+                    <mat-label>Round 1</mat-label>
+                    <input  #newItem type="number" matInput formControlName="roundOne">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Round 2</mat-label>
+                    <input  type="number" matInput formControlName="roundTwo">
+                </mat-form-field>
+                </form>
+                <div class="nextTurn">
+                    <button class="nextTurn" mat-mini-fab color="primary" (click)="onSubmit()">
+                        <mat-icon >navigate_next</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-expansion-panel>
 
-    <mat-grid-tile>
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>Character Statistics</mat-panel-title>
+    </mat-expansion-panel-header>
         <div  class="statistics">
             <div class="title"><h1>Character Statistics</h1></div>
             <mat-divider></mat-divider>
@@ -22,9 +55,9 @@
             <div class="headContainer">
                 <div class="inlineStat">
                     <div class="dmgDots">
-                        <mat-icon matTooltip="First Concussion  (-1 to all rolls)" *ngIf="!headBrokenFirst; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Second Concussion  (-3 to all rolls)" *ngIf="!headBrokenSecond; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Third Concussion  (fall unconsciouss)" *ngIf="!headBrokenThird; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="First Concussion  (-1 to all rolls)" *ngIf="!headBrokenFirst; else brokenHeadFirst" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Second Concussion  (-3 to all rolls)" *ngIf="!headBrokenSecond; else brokenHeadSecond" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Third Concussion  (fall unconsciouss)" *ngIf="!headBrokenThird; else brokenHeadThird" color="primary" >circle</mat-icon>
                         
                     </div>
                     <h1>Head: {{currentHeadHP}} / {{totalHeadHP}}</h1>
@@ -60,8 +93,8 @@
             <div class="rightArmContainer">
                 <div class="inlineStat">
                     <div class="dmgDots">
-                        <mat-icon matTooltip="First Right Arm Injury (lowers all actions with that arm)" *ngIf="!rarmBrokenFirst; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Second Right Arm Injury (makes the arm unusable)"*ngIf="!rarmBrokenSecond; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="First Right Arm Injury (lowers all actions with that arm)" *ngIf="!rarmBrokenFirst; else brokenRArmFirst" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Second Right Arm Injury (makes the arm unusable)"*ngIf="!rarmBrokenSecond; else brokenRArmSecond" color="primary" >circle</mat-icon>
                     </div>
                     <h1>Right Arm: {{currentRArmHP}}/{{totalRArm}}</h1>
                 </div>
@@ -78,8 +111,8 @@
             <div class="leftArmContainer">
                 <div class="inlineStat">
                     <div class="dmgDots">
-                        <mat-icon matTooltip="First Left Arm Injury (lowers all actions with that arm)" *ngIf="!larmBrokenFirst; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Second Left Arm Injury (makes the arm unusable)" *ngIf="!larmBrokenSecond; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="First Left Arm Injury (lowers all actions with that arm)" *ngIf="!larmBrokenFirst; else brokenLArmFirst" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Second Left Arm Injury (makes the arm unusable)" *ngIf="!larmBrokenSecond; else brokenLArmSecond" color="primary" >circle</mat-icon>
                     </div>
                     <h1>Left Arm: {{currentLArmHP}}/{{totalLArm}}</h1>
                 </div>
@@ -132,10 +165,10 @@
             <div class="staminaContainer">
                 <div class="inlineStat">
                     <div class="dmgDots">
-                        <mat-icon matTooltip="Winded" *ngIf="!staminaFirst; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Tired" *ngIf="!staminaSecond; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Fatigued" *ngIf="!staminaThird; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Black-out" *ngIf="!staminaFourth; else broken" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Winded" *ngIf="!staminaFirst; else staminaCrFirst" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Tired" *ngIf="!staminaSecond; else staminaCrSecond" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Fatigued" *ngIf="!staminaThird; else staminaCrThird" color="primary" >circle</mat-icon>
+                        <mat-icon matTooltip="Black-out" *ngIf="!staminaFourth; else staminaCrFourth" color="primary" >circle</mat-icon>
                     </div>
                     <h1>Stamina: {{currentStamina}}/{{stamina}}</h1>
                 </div>
@@ -168,43 +201,24 @@
                 <h1>State: {{currentState}}</h1>
             </div>
         </div> 
-    </mat-grid-tile>
 
-    <mat-grid-tile>
-        <div class="trackerContainer">
-            <div class="title">
-                <h1>Action Points Tracker</h1>
-            </div>
-            <div class="container">
-                <div class="turns">
-                    <h1 >Turn {{turn}}</h1>
-                </div>
-                <div class="roundsTracker">
-                    <form class="example-form" [formGroup]="apForm">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Round 1</mat-label>
-                        <input  #newItem type="number" matInput formControlName="roundOne">
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Round 2</mat-label>
-                        <input  type="number" matInput formControlName="roundTwo">
-                    </mat-form-field>
-                    </form>
-                    <div class="nextTurn">
-                        <button class="nextTurn" mat-mini-fab color="primary" (click)="onSubmit()">
-                            <mat-icon >navigate_next</mat-icon>
-                        </button>
-                    </div>
-                </div>
-            </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Log</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngFor="let log of logs">
+            <h3>Turn{{log.turnNumber}}:</h3>
+            <p>On Round 1 you spent {{log.roundOne}}AP; On Round 2 you spent {{log.roundTwo}}AP</p>
+            <mat-divider></mat-divider>
         </div>
-        <mat-grid-tile>
-            <h1>hh</h1>
-        </mat-grid-tile>
-    </mat-grid-tile>
-    
+    </mat-expansion-panel>
 
-  </mat-grid-list>
+    
+</div>
+
+
 
 
 
@@ -220,6 +234,33 @@
     </button>
 </ng-template>
 
+
+
+
+
+
+
 <ng-template #broken><mat-icon color="warn" >circle</mat-icon></ng-template>
 
+<ng-template #brokenHeadFirst><mat-icon matTooltip="First Concussion  (-1 to all rolls)" color="warn" >circle</mat-icon></ng-template>
+<ng-template #brokenHeadSecond><mat-icon matTooltip="Second Concussion  (-3 to all rolls)" color="warn" >circle</mat-icon></ng-template>
+<ng-template #brokenHeadThird><mat-icon matTooltip="Third Concussion  (fall unconsciouss)" color="warn" >circle</mat-icon></ng-template>
+
+<ng-template #brokenRArmFirst><mat-icon matTooltip="First Right Arm Injury (lowers all actions with that arm)" color="warn" >circle</mat-icon></ng-template>
+<ng-template #brokenRArmSecond><mat-icon matTooltip="Second Right Arm Injury (makes the arm unusable)" color="warn" >circle</mat-icon></ng-template>
+
+<ng-template #brokenLArmFirst><mat-icon matTooltip="First Left Arm Injury (lowers all actions with that arm)" color="warn" >circle</mat-icon></ng-template>
+<ng-template #brokenLArmSecond><mat-icon matTooltip="Second Left Arm Injury (makes the arm unusable)" color="warn" >circle</mat-icon></ng-template>
+
+
+<ng-template #brokenRLegFirst><mat-icon matTooltip="First Right Leg Injury (lowers ms by 1/4)" color="warn" >circle</mat-icon></ng-template>
+<ng-template #brokenRLegSecond><mat-icon matTooltip="Second Right Leg Injury (lowers ms by 1/4)" color="warn" >circle</mat-icon></ng-template>
+
+<ng-template #brokenLLegFirst><mat-icon matTooltip="First Left Leg Injury (lowers ms by 1/4)" color="warn" >circle</mat-icon></ng-template>
+<ng-template #brokenLLegSecond><mat-icon matTooltip="Second Left Leg Injury (lowers ms by 1/4)" color="warn" >circle</mat-icon></ng-template>
+
+<ng-template #staminaCrFirst><mat-icon matTooltip="Winded" color="warn" >circle</mat-icon></ng-template>
+<ng-template #staminaCrSecond><mat-icon matTooltip="Tired" color="warn" >circle</mat-icon></ng-template>
+<ng-template #staminaCrThird><mat-icon matTooltip="Fatigued" color="warn" >circle</mat-icon></ng-template>
+<ng-template #staminaCrFourth><mat-icon matTooltip="Black-out" color="warn" >circle</mat-icon></ng-template>
 

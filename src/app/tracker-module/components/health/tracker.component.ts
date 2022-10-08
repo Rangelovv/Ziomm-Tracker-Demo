@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup,  FormControl, NgForm, Validators } from '@angular/forms';
-
+import { LogModel } from 'src/app/characters-module/models/turn.model';
+import { LogService } from 'src/app/characters-module/services/log.service';
 @Component({
   selector: 'app-tracker',
   templateUrl: './tracker.component.html',
@@ -95,7 +96,9 @@ export class TrackerComponent implements OnInit {
 
     currentState:string = "Normal"
 
-  constructor() { }
+    logs?: LogModel[]
+
+  constructor(private logService:LogService ) { }
 
 
  
@@ -144,21 +147,36 @@ export class TrackerComponent implements OnInit {
       this.currentMS = this.currentMS / 2
     }
 
+    this.logs = this.logService.returnLog()
  }
 
   
   onSubmit(){
+   
+
     this.roundOne = this.apForm.value.roundOne
     this.roundTwo = this.apForm.value.roundTwo
     this.roundsSum = this.roundOne + this.roundTwo
+
     if(this.roundsSum == 7){
       this.currentStamina = this.currentStamina - 1
     }
     if(this.roundsSum == 8){
       this.currentStamina = this.currentStamina - 2
     }
+
     this.turn = this.turn + 1
+
+    let log: LogModel= {
+      roundOne: this.apForm.value.roundOne,
+      roundTwo: this.apForm.value.roundTwo,
+      turnNumber: this.turn - 1,
+    }
+    this.logService.addTurn(log)
+
     this.apForm.reset()
+
+    console.log(this.logs)
   }
 
   bodyDown(){
