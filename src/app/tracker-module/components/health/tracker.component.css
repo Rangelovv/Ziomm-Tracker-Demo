@@ -78,6 +78,7 @@
         width: 50%;
     }
     .turns{
+        display: inline-flex;
         margin-left: 3.5%;
     }
     .turns h1{

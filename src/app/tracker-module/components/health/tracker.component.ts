@@ -171,7 +171,7 @@ export class TrackerComponent implements OnInit {
       this.currentStamina = this.currentStamina - 2
       this.stSpent = 2
     }
-    if(this.roundsSum < 8){
+    if(this.roundsSum <= 6){
       this.stSpent = 0
     }
 
