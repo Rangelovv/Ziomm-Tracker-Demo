@@ -15,7 +15,6 @@ export class LogService {
 
   returnLog(){
     return this.turnsLog;
-
   }
   
 

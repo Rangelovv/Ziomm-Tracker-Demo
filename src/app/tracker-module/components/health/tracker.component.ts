@@ -18,6 +18,9 @@ export class TrackerComponent implements OnInit {
   @Input() totalLLeg!:number
   @Input() stamina!:number
   @Input() ms!:number
+  
+
+
 
   currentHealth!:number 
   currentHeadHP!:number 
@@ -96,9 +99,12 @@ export class TrackerComponent implements OnInit {
 
     currentState:string = "Normal"
 
-    logs?: LogModel[]
+    turnsLog: LogModel[] = [
+   
+    ]    
+    logs!: LogModel[]
 
-  constructor(private logService:LogService ) { }
+  constructor() { }
 
 
  
@@ -147,7 +153,7 @@ export class TrackerComponent implements OnInit {
       this.currentMS = this.currentMS / 2
     }
 
-    this.logs = this.logService.returnLog()
+    this.logs = this.returnLog()
  }
 
   
@@ -172,7 +178,7 @@ export class TrackerComponent implements OnInit {
       roundTwo: this.apForm.value.roundTwo,
       turnNumber: this.turn - 1,
     }
-    this.logService.addTurn(log)
+    this.addTurn(log)
 
     this.apForm.reset()
 
@@ -470,6 +476,11 @@ export class TrackerComponent implements OnInit {
     }
   }
   
-  
+  addTurn(Log: LogModel){
+    this.turnsLog.push(Log)
+  }
+  returnLog(){
+    return this.turnsLog;
+  }
 
 }

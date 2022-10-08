@@ -1,6 +1,7 @@
+import { CharacterModel } from "./character.model"
 
 
-export class LogModel {
+export class LogModel   {
     public turnNumber?:number
     public roundOne?:number
     public roundTwo?:number
