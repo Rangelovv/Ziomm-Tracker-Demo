@@ -8,7 +8,10 @@
         padding-left: 0%;
         padding-right: 0%;   
     }
+   
 }
+
+
 
 .statistics{
     display: inline-flexbox;
@@ -17,6 +20,15 @@
 .inlineStat{
    display: inline-flex;
 }
+@media (max-width: 375px) {
+    .panels-container {
+        padding-left: 0%;
+        padding-right: 0%;   
+    }
+    .inlineStat h1{
+        font-size: 15px;
+    }
+}
 
 .inlineControls{
     display: inline-flexbox;
@@ -24,60 +36,58 @@
     padding-left: 0%;
 }
 
-
 .dmgDots{
     float: left;
     margin-right:1vh;
 }
 
-
-
-.title{
-    text-align: center;
-}
-
-.turns{
-    display: inline-block;
-    position: relative;
-
-
-}
 .container{
     justify-content: center;
     display: inline;
+}
+
+
+
+
+.trackerContainer{
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+.turns{
+    display: inline-flex;
+    position: relative;
 }
 .roundsTracker{
     display:inline-flex;
     justify-content: center;
     position: relative;
-
-
-}
-
-.title{
-    text-align: center;
-    position: relative;
-}
-.nextTurn{
-    margin-top: 0.4vh;
-    margin-left:1vh;
-    float:right;
-    position: relative;
-
-
 }
 .example-form{
     margin-left: 2vh;
 }
+.nextTurn{
+    margin-top: 0.4vh;
+    margin-left:1vh;
 
-.trackerContainer{
-    justify-content: center;
-    display: inline-block;
-    position: relative;
-
+    display:inline-block;
 
 }
 
-.mat-grid-list{
-    margin-top: 0px;
+@media (max-width: 590px) {
+    .mat-form-field{
+        width: 50%;
+    }
+    .turns{
+        margin-left: 3.5%;
+    }
+    .turns h1{
+        font-size: 20px;
+    }
+
 }
+
+
+p, h3{
+    margin-top: -100;
+}
+

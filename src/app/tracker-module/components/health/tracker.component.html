@@ -1,7 +1,6 @@
 <div class="panels-container">
   
     <mat-accordion>
-
     <mat-expansion-panel>
         <mat-expansion-panel-header>
             <mat-panel-title>Action Points Tracker</mat-panel-title>
@@ -9,7 +8,7 @@
         <div class="trackerContainer">
             <div class="container">
                 <div class="turns">
-                    <h1 >Turn {{turn}}</h1>
+                    <h1>Turn {{turn}}</h1>
                 </div>
                 <div class="roundsTracker">
                     <form class="example-form" [formGroup]="apForm">
@@ -209,8 +208,9 @@
                 <mat-panel-title>Log</mat-panel-title>
             </mat-expansion-panel-header>
             <div *ngFor="let log of logs">
-                <h3>Turn{{log.turnNumber}}:</h3>
-                <p>On Round 1 you spent {{log.roundOne}}AP; On Round 2 you spent {{log.roundTwo}}AP jnkabkjdbasbjdakbdkjabsdkabs</p>
+                <h3>Turn {{log.turnNumber}}:</h3>
+                <li >On Round 1 you spent: {{log.roundOne}}AP </li>
+                <li> On Round 2 you spent: {{log.roundTwo}}AP</li>
                 <mat-divider></mat-divider>
             </div>
         </mat-expansion-panel>
