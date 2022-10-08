@@ -1,0 +1,19 @@
+.stepper{
+    padding-top: 3%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+@media (max-width: 600px) {
+    .stepper{
+        padding-left: 0%;
+        padding-right: 0%;
+    }
+}
+
+@media (max-width: 600px) {
+    .mat-form-field{
+        width: 50%;
+    }
+
+}
