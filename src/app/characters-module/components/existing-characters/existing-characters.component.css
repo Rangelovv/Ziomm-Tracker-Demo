@@ -1,2 +1,14 @@
 
-  
+
+.neshto{
+    padding-top: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+@media (max-width: 480px) {
+    .panels-container {
+        padding-left: 0%;
+        padding-right: 0%;   
+    }
+}

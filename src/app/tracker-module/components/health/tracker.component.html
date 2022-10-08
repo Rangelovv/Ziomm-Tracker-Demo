@@ -1,221 +1,221 @@
-<div style=" padding: 1% 20%;">
-    
-<mat-expansion-panel>
-    <mat-expansion-panel-header>
-        <mat-panel-title>Action Points Tracker</mat-panel-title>
-    </mat-expansion-panel-header>
-    <div class="trackerContainer">
-        <div class="container">
-            <div class="turns">
-                <h1 >Turn {{turn}}</h1>
-            </div>
-            <div class="roundsTracker">
-                <form class="example-form" [formGroup]="apForm">
-                <mat-form-field appearance="fill">
-                    <mat-label>Round 1</mat-label>
-                    <input  #newItem type="number" matInput formControlName="roundOne">
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                    <mat-label>Round 2</mat-label>
-                    <input  type="number" matInput formControlName="roundTwo">
-                </mat-form-field>
-                </form>
-                <div class="nextTurn">
-                    <button class="nextTurn" mat-mini-fab color="primary" (click)="onSubmit()">
-                        <mat-icon >navigate_next</mat-icon>
-                    </button>
+<div class="panels-container">
+  
+    <mat-accordion>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Action Points Tracker</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="trackerContainer">
+            <div class="container">
+                <div class="turns">
+                    <h1 >Turn {{turn}}</h1>
+                </div>
+                <div class="roundsTracker">
+                    <form class="example-form" [formGroup]="apForm">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Round 1</mat-label>
+                        <input  #newItem type="number" matInput formControlName="roundOne">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Round 2</mat-label>
+                        <input  type="number" matInput formControlName="roundTwo">
+                    </mat-form-field>
+                    </form>
+                    <div class="nextTurn">
+                        <button class="nextTurn" mat-mini-fab color="primary" (click)="onSubmit()">
+                            <mat-icon >navigate_next</mat-icon>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</mat-expansion-panel>
-
-<mat-expansion-panel>
-    <mat-expansion-panel-header>
-        <mat-panel-title>Character Statistics</mat-panel-title>
-    </mat-expansion-panel-header>
-        <div  class="statistics">
-            <div class="title"><h1>Character Statistics</h1></div>
-            <mat-divider></mat-divider>
-            <div class="totalContainer">
-                <div class="inlineStat">
-                    <h1>Total health: {{currentHealth}} / {{totalHealth}}</h1>
-                </div>
-                <div class="inlineControls">
-                    <button mat-icon-button color="primary">
-                        <mat-icon *ngIf="!healthFinished; else disabledUp" (click)="totalHealthUp()">arrow_upward</mat-icon>
-                    </button>
-                    <button *ngIf="!healthFinished; else disabledDown" (click)="totalHealthDown()" mat-icon-button color="warn">
-                        <mat-icon>arrow_downward</mat-icon>
-                    </button>
-                </div>
-                
-            </div>
-            <mat-divider></mat-divider>
-            <div class="headContainer">
-                <div class="inlineStat">
-                    <div class="dmgDots">
-                        <mat-icon matTooltip="First Concussion  (-1 to all rolls)" *ngIf="!headBrokenFirst; else brokenHeadFirst" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Second Concussion  (-3 to all rolls)" *ngIf="!headBrokenSecond; else brokenHeadSecond" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Third Concussion  (fall unconsciouss)" *ngIf="!headBrokenThird; else brokenHeadThird" color="primary" >circle</mat-icon>
-                        
-                    </div>
-                    <h1>Head: {{currentHeadHP}} / {{totalHeadHP}}</h1>
-                </div>
-                <div class="inlineControls">
-                    <button (click)="headUp()" *ngIf="!headFinished; else disabledUp" mat-icon-button color="primary">
-                        <mat-icon>arrow_upward</mat-icon>
-                    </button>
-                    <button *ngIf="!headFinished; else disabledDown" (click)="headDown()" mat-icon-button color="warn">
-                        <mat-icon>arrow_downward</mat-icon>
-                    </button>
-                </div>
-            </div>
-            <mat-divider></mat-divider>
-            <div class="bodyContainer">
-                <div class="inlineStat">
-                    <div class="dmgDots">
-                        <mat-icon *ngIf="!bodyFirst; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon *ngIf="!bodySecond; else broken" color="primary" >circle</mat-icon>
-                    </div>
-                    <h1>Body: {{currentBodyHP}} / {{totalBodyHP}}</h1>
-                </div>
-                <div class="inlineControls">
-                    <button (click)="bodyUp()" *ngIf="!bodyFinished; else disabledUp" mat-icon-button color="primary">
-                        <mat-icon>arrow_upward</mat-icon>
-                    </button>
-                    <button *ngIf="!bodyFinished; else disabledDown" (click)="bodyDown()" mat-icon-button color="warn">
-                        <mat-icon>arrow_downward</mat-icon>
-                    </button>
-                </div>
-            </div>
-            <mat-divider></mat-divider>
-            <div class="rightArmContainer">
-                <div class="inlineStat">
-                    <div class="dmgDots">
-                        <mat-icon matTooltip="First Right Arm Injury (lowers all actions with that arm)" *ngIf="!rarmBrokenFirst; else brokenRArmFirst" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Second Right Arm Injury (makes the arm unusable)"*ngIf="!rarmBrokenSecond; else brokenRArmSecond" color="primary" >circle</mat-icon>
-                    </div>
-                    <h1>Right Arm: {{currentRArmHP}}/{{totalRArm}}</h1>
-                </div>
-                <div class="inlineControls">
-                    <button (click)="rarmUp()" *ngIf="!rarmFinished; else disabledUp" mat-icon-button color="primary">
-                        <mat-icon>arrow_upward</mat-icon>
-                    </button>
-                    <button *ngIf="!rarmFinished; else disabledDown" (click)="rarmDown()" mat-icon-button color="warn">
-                        <mat-icon>arrow_downward</mat-icon>
-                    </button>
-                </div>
-            </div>
-            <mat-divider></mat-divider>
-            <div class="leftArmContainer">
-                <div class="inlineStat">
-                    <div class="dmgDots">
-                        <mat-icon matTooltip="First Left Arm Injury (lowers all actions with that arm)" *ngIf="!larmBrokenFirst; else brokenLArmFirst" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Second Left Arm Injury (makes the arm unusable)" *ngIf="!larmBrokenSecond; else brokenLArmSecond" color="primary" >circle</mat-icon>
-                    </div>
-                    <h1>Left Arm: {{currentLArmHP}}/{{totalLArm}}</h1>
-                </div>
-                <div class="inlineControls">
-                    <button (click)="larmUp()" *ngIf="!larmFinished; else disabledUp" mat-icon-button color="primary">
-                        <mat-icon>arrow_upward</mat-icon>
-                    </button>
-                    <button *ngIf="!larmFinished; else disabledDown" (click)="larmDown()" mat-icon-button color="warn">
-                        <mat-icon>arrow_downward</mat-icon>
-                    </button>
-                </div>
-            </div>
-            <mat-divider></mat-divider>
-            <div class="rightLegContainer">
-                <div class="inlineStat">
-                    <div class="dmgDots">
-                        <mat-icon matTooltip="First Right Leg Injury (lowers ms by 1/4)" *ngIf="!rlegBrokenFirst; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Second Right Leg Injury (lowers ms by 1/4)" *ngIf="!rlegBrokenSecond; else broken" color="primary" >circle</mat-icon>
-                    </div>
-                    <h1>Right Leg: {{currentRLegHP}}/{{totalRLeg}}</h1>
-                </div>
-                <div class="inlineControls">
-                    <button (click)="rlegUp()" *ngIf="!rlegFinished; else disabledUp" mat-icon-button color="primary">
-                        <mat-icon>arrow_upward</mat-icon>
-                    </button>
-                    <button *ngIf="!rlegFinished; else disabledDown" (click)="rlegDown()" mat-icon-button color="warn">
-                        <mat-icon>arrow_downward</mat-icon>
-                    </button>
-                </div>
-            </div>
-            <mat-divider></mat-divider>
-            <div class="leftLegContainer">
-                <div class="inlineStat">
-                    <div class="dmgDots">
-                        <mat-icon matTooltip="First Left Leg Injury (lowers ms by 1/4)" *ngIf="!llegBrokenFirst; else broken" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Second Left Leg Injury (lowers ms by 1/4)" *ngIf="!llegBrokenSecond; else broken" color="primary" >circle</mat-icon>
-                    </div>
-                    <h1>Left Leg: {{currentLLegHP}}/{{totalLLeg}}</h1>
-                </div>
-                <div class="inlineControls">
-                    <button (click)="llegUp()" *ngIf="!llegFinished; else disabledUp" mat-icon-button color="primary">
-                        <mat-icon>arrow_upward</mat-icon>
-                    </button>
-                    <button *ngIf="!llegFinished; else disabledDown" (click)="llegDown()" mat-icon-button color="warn">
-                        <mat-icon>arrow_downward</mat-icon>
-                    </button>
-                </div>
-            </div>
-            <mat-divider></mat-divider>
-            <div class="staminaContainer">
-                <div class="inlineStat">
-                    <div class="dmgDots">
-                        <mat-icon matTooltip="Winded" *ngIf="!staminaFirst; else staminaCrFirst" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Tired" *ngIf="!staminaSecond; else staminaCrSecond" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Fatigued" *ngIf="!staminaThird; else staminaCrThird" color="primary" >circle</mat-icon>
-                        <mat-icon matTooltip="Black-out" *ngIf="!staminaFourth; else staminaCrFourth" color="primary" >circle</mat-icon>
-                    </div>
-                    <h1>Stamina: {{currentStamina}}/{{stamina}}</h1>
-                </div>
-                <div class="inlineControls">
-                    <button mat-icon-button color="primary">
-                        <mat-icon  (click)="staminaUp()">arrow_upward</mat-icon>
-                    </button>
-                    <button *ngIf="!staminaFinished; else disabledDown" (click)="staminaDown()" mat-icon-button color="warn">
-                        <mat-icon>arrow_downward</mat-icon>
-                    </button>
-                </div>
-            </div>
-            <mat-divider ></mat-divider>
-            <div class="staminaContainer">
-                <div class="inlineStat">
-                    <h1>Movement Speed(MS): {{currentMS}}</h1>
-                </div>
-                <div class="inlineControls">
-                    <button mat-icon-button color="primary">
-                        <mat-icon *ngIf="!msFinished; else disabledUp" (click)="msUp()">arrow_upward</mat-icon>
-                    </button>
-                    <button *ngIf="!msFinished; else disabledDown" (click)="msDown()" mat-icon-button color="warn">
-                        <mat-icon>arrow_downward</mat-icon>
-                    </button>
-                </div>
-            </div>
-            <mat-divider ></mat-divider>
-
-            <div class="inlineStat">
-                <h1>State: {{currentState}}</h1>
-            </div>
-        </div> 
-
     </mat-expansion-panel>
 
     <mat-expansion-panel>
         <mat-expansion-panel-header>
-            <mat-panel-title>Log</mat-panel-title>
+            <mat-panel-title>Character Statistics</mat-panel-title>
         </mat-expansion-panel-header>
-        <div *ngFor="let log of logs">
-            <h3>Turn{{log.turnNumber}}:</h3>
-            <p>On Round 1 you spent {{log.roundOne}}AP; On Round 2 you spent {{log.roundTwo}}AP</p>
-            <mat-divider></mat-divider>
-        </div>
-    </mat-expansion-panel>
+            <div  class="statistics">
+                <div class="totalContainer">
+                    <div class="inlineStat">
+                        <h1>Total health: {{currentHealth}} / {{totalHealth}}</h1>
+                    </div>
+                    <div class="inlineControls">
+                        <button mat-icon-button color="primary">
+                            <mat-icon *ngIf="!healthFinished; else disabledUp" (click)="totalHealthUp()">arrow_upward</mat-icon>
+                        </button>
+                        <button *ngIf="!healthFinished; else disabledDown" (click)="totalHealthDown()" mat-icon-button color="warn">
+                            <mat-icon>arrow_downward</mat-icon>
+                        </button>
+                    </div>
+                    
+                </div>
+                <mat-divider></mat-divider>
+                <div class="headContainer">
+                    <div class="inlineStat">
+                        <div class="dmgDots">
+                            <mat-icon matTooltip="First Concussion  (-1 to all rolls)" *ngIf="!headBrokenFirst; else brokenHeadFirst" color="primary" >circle</mat-icon>
+                            <mat-icon matTooltip="Second Concussion  (-3 to all rolls)" *ngIf="!headBrokenSecond; else brokenHeadSecond" color="primary" >circle</mat-icon>
+                            <mat-icon matTooltip="Third Concussion  (fall unconsciouss)" *ngIf="!headBrokenThird; else brokenHeadThird" color="primary" >circle</mat-icon>
+                            
+                        </div>
+                        <h1>Head: {{currentHeadHP}} / {{totalHeadHP}}</h1>
+                    </div>
+                    <div class="inlineControls">
+                        <button (click)="headUp()" *ngIf="!headFinished; else disabledUp" mat-icon-button color="primary">
+                            <mat-icon>arrow_upward</mat-icon>
+                        </button>
+                        <button *ngIf="!headFinished; else disabledDown" (click)="headDown()" mat-icon-button color="warn">
+                            <mat-icon>arrow_downward</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="bodyContainer">
+                    <div class="inlineStat">
+                        <div class="dmgDots">
+                            <mat-icon *ngIf="!bodyFirst; else broken" color="primary" >circle</mat-icon>
+                            <mat-icon *ngIf="!bodySecond; else broken" color="primary" >circle</mat-icon>
+                        </div>
+                        <h1>Body: {{currentBodyHP}} / {{totalBodyHP}}</h1>
+                    </div>
+                    <div class="inlineControls">
+                        <button (click)="bodyUp()" *ngIf="!bodyFinished; else disabledUp" mat-icon-button color="primary">
+                            <mat-icon>arrow_upward</mat-icon>
+                        </button>
+                        <button *ngIf="!bodyFinished; else disabledDown" (click)="bodyDown()" mat-icon-button color="warn">
+                            <mat-icon>arrow_downward</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="rightArmContainer">
+                    <div class="inlineStat">
+                        <div class="dmgDots">
+                            <mat-icon matTooltip="First Right Arm Injury (lowers all actions with that arm)" *ngIf="!rarmBrokenFirst; else brokenRArmFirst" color="primary" >circle</mat-icon>
+                            <mat-icon matTooltip="Second Right Arm Injury (makes the arm unusable)"*ngIf="!rarmBrokenSecond; else brokenRArmSecond" color="primary" >circle</mat-icon>
+                        </div>
+                        <h1>Right Arm: {{currentRArmHP}}/{{totalRArm}}</h1>
+                    </div>
+                    <div class="inlineControls">
+                        <button (click)="rarmUp()" *ngIf="!rarmFinished; else disabledUp" mat-icon-button color="primary">
+                            <mat-icon>arrow_upward</mat-icon>
+                        </button>
+                        <button *ngIf="!rarmFinished; else disabledDown" (click)="rarmDown()" mat-icon-button color="warn">
+                            <mat-icon>arrow_downward</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="leftArmContainer">
+                    <div class="inlineStat">
+                        <div class="dmgDots">
+                            <mat-icon matTooltip="First Left Arm Injury (lowers all actions with that arm)" *ngIf="!larmBrokenFirst; else brokenLArmFirst" color="primary" >circle</mat-icon>
+                            <mat-icon matTooltip="Second Left Arm Injury (makes the arm unusable)" *ngIf="!larmBrokenSecond; else brokenLArmSecond" color="primary" >circle</mat-icon>
+                        </div>
+                        <h1>Left Arm: {{currentLArmHP}}/{{totalLArm}}</h1>
+                    </div>
+                    <div class="inlineControls">
+                        <button (click)="larmUp()" *ngIf="!larmFinished; else disabledUp" mat-icon-button color="primary">
+                            <mat-icon>arrow_upward</mat-icon>
+                        </button>
+                        <button *ngIf="!larmFinished; else disabledDown" (click)="larmDown()" mat-icon-button color="warn">
+                            <mat-icon>arrow_downward</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="rightLegContainer">
+                    <div class="inlineStat">
+                        <div class="dmgDots">
+                            <mat-icon matTooltip="First Right Leg Injury (lowers ms by 1/4)" *ngIf="!rlegBrokenFirst; else broken" color="primary" >circle</mat-icon>
+                            <mat-icon matTooltip="Second Right Leg Injury (lowers ms by 1/4)" *ngIf="!rlegBrokenSecond; else broken" color="primary" >circle</mat-icon>
+                        </div>
+                        <h1>Right Leg: {{currentRLegHP}}/{{totalRLeg}}</h1>
+                    </div>
+                    <div class="inlineControls">
+                        <button (click)="rlegUp()" *ngIf="!rlegFinished; else disabledUp" mat-icon-button color="primary">
+                            <mat-icon>arrow_upward</mat-icon>
+                        </button>
+                        <button *ngIf="!rlegFinished; else disabledDown" (click)="rlegDown()" mat-icon-button color="warn">
+                            <mat-icon>arrow_downward</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="leftLegContainer">
+                    <div class="inlineStat">
+                        <div class="dmgDots">
+                            <mat-icon matTooltip="First Left Leg Injury (lowers ms by 1/4)" *ngIf="!llegBrokenFirst; else broken" color="primary" >circle</mat-icon>
+                            <mat-icon matTooltip="Second Left Leg Injury (lowers ms by 1/4)" *ngIf="!llegBrokenSecond; else broken" color="primary" >circle</mat-icon>
+                        </div>
+                        <h1>Left Leg: {{currentLLegHP}}/{{totalLLeg}}</h1>
+                    </div>
+                    <div class="inlineControls">
+                        <button (click)="llegUp()" *ngIf="!llegFinished; else disabledUp" mat-icon-button color="primary">
+                            <mat-icon>arrow_upward</mat-icon>
+                        </button>
+                        <button *ngIf="!llegFinished; else disabledDown" (click)="llegDown()" mat-icon-button color="warn">
+                            <mat-icon>arrow_downward</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="staminaContainer">
+                    <div class="inlineStat">
+                        <div class="dmgDots">
+                            <mat-icon matTooltip="Winded" *ngIf="!staminaFirst; else staminaCrFirst" color="primary" >circle</mat-icon>
+                            <mat-icon matTooltip="Tired" *ngIf="!staminaSecond; else staminaCrSecond" color="primary" >circle</mat-icon>
+                            <mat-icon matTooltip="Fatigued" *ngIf="!staminaThird; else staminaCrThird" color="primary" >circle</mat-icon>
+                            <mat-icon matTooltip="Black-out" *ngIf="!staminaFourth; else staminaCrFourth" color="primary" >circle</mat-icon>
+                        </div>
+                        <h1>Stamina: {{currentStamina}}/{{stamina}}</h1>
+                    </div>
+                    <div class="inlineControls">
+                        <button mat-icon-button color="primary">
+                            <mat-icon  (click)="staminaUp()">arrow_upward</mat-icon>
+                        </button>
+                        <button *ngIf="!staminaFinished; else disabledDown" (click)="staminaDown()" mat-icon-button color="warn">
+                            <mat-icon>arrow_downward</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-divider ></mat-divider>
+                <div class="staminaContainer">
+                    <div class="inlineStat">
+                        <h1>Movement Speed: {{currentMS}}</h1>
+                    </div>
+                    <div class="inlineControls">
+                        <button mat-icon-button color="primary">
+                            <mat-icon *ngIf="!msFinished; else disabledUp" (click)="msUp()">arrow_upward</mat-icon>
+                        </button>
+                        <button *ngIf="!msFinished; else disabledDown" (click)="msDown()" mat-icon-button color="warn">
+                            <mat-icon>arrow_downward</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-divider ></mat-divider>
 
-    
+                <div class="inlineStat">
+                    <h1>State: {{currentState}}</h1>
+                </div>
+            </div> 
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>Log</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngFor="let log of logs">
+                <h3>Turn{{log.turnNumber}}:</h3>
+                <p>On Round 1 you spent {{log.roundOne}}AP; On Round 2 you spent {{log.roundTwo}}AP jnkabkjdbasbjdakbdkjabsdkabs</p>
+                <mat-divider></mat-divider>
+            </div>
+        </mat-expansion-panel>
+
+    </mat-accordion>  
 </div>
 
 

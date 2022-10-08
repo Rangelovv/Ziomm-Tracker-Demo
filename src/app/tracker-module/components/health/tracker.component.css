@@ -1,9 +1,17 @@
+.panels-container{
+    padding-top: 3%;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+@media (max-width: 950px) {
+    .panels-container {
+        padding-left: 0%;
+        padding-right: 0%;   
+    }
+}
 
 .statistics{
-    padding: 1vh;
-    width: 85vh;
-    border:0.15vh solid black;   
-    display: inline-block;
+    display: inline-flexbox;
 }
 
 .inlineStat{
@@ -11,19 +19,22 @@
 }
 
 .inlineControls{
-    display: inline;
+    display: inline-flexbox;
     float: right;
+    padding-left: 0%;
 }
 
-.title{
-    text-align: center;
-}
 
 .dmgDots{
     float: left;
     margin-right:1vh;
 }
 
+
+
+.title{
+    text-align: center;
+}
 
 .turns{
     display: inline-block;
