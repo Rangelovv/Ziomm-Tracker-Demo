@@ -99,10 +99,9 @@ export class TrackerComponent implements OnInit {
 
     currentState:string = "Normal"
 
-    turnsLog: LogModel[] = [
-   
-    ]    
+    turnsLog: LogModel[] = []    
     logs!: LogModel[]
+    stSpent!:number
 
   constructor() { }
 
@@ -166,9 +165,14 @@ export class TrackerComponent implements OnInit {
 
     if(this.roundsSum == 7){
       this.currentStamina = this.currentStamina - 1
+      this.stSpent = 1
     }
     if(this.roundsSum == 8){
       this.currentStamina = this.currentStamina - 2
+      this.stSpent = 2
+    }
+    if(this.roundsSum < 8){
+      this.stSpent = 0
     }
 
     this.turn = this.turn + 1
@@ -177,6 +181,8 @@ export class TrackerComponent implements OnInit {
       roundOne: this.apForm.value.roundOne,
       roundTwo: this.apForm.value.roundTwo,
       turnNumber: this.turn - 1,
+      staminaSpent: this.stSpent,
+      overallAP:this.roundsSum
     }
     this.addTurn(log)
 
