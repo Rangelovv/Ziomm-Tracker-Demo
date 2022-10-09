@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup,  FormControl, NgForm, Validators } from '@angular/forms';
 import { LogModel } from 'src/app/characters-module/models/turn.model';
 import { LogService } from 'src/app/characters-module/services/log.service';
+
 @Component({
   selector: 'app-tracker',
   templateUrl: './tracker.component.html',

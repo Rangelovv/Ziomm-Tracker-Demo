@@ -7,11 +7,13 @@ import { CharactersService } from '../characters-module/services/characters.serv
 import { TurnsTrackerComponent } from './components/turns-tracker/turns-tracker.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TrackerComponent } from './components/health/tracker.component';
+import { CheatsheetComponent } from './components/cheatsheet/cheatsheet.component';
 @NgModule({
   declarations: [
     TrackerCoreComponent,
     TrackerComponent,
-    TurnsTrackerComponent
+    TurnsTrackerComponent,
+    CheatsheetComponent
   ],
   imports: [
     CommonModule,

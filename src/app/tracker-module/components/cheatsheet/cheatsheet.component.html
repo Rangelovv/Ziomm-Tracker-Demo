@@ -1,0 +1,195 @@
+<div class="panels-container">
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Actions</mat-panel-title>
+        </mat-expansion-panel-header>
+       <table>
+            <tr>
+                <th>Mode</th>
+                <th>1AP</th>
+                <th>2AP</th>
+                <th>4AP</th>
+            </tr>
+            <tr>
+                <td>Walk</td>
+                <td>1/4 MS</td>
+                <td>1/2 MS</td>
+                <td>1 MS</td>
+            </tr>
+            <tr>
+                <td>Run</td>
+                <td>1/2 MS; 1STA Cost</td>
+                <td>1 MS; 2STA Cost</td>
+                <td>2 MS; 3STA Cost</td>
+            </tr>
+            <tr>
+                <td>Sprint</td>
+                <td>1 MS; 3STA Cost</td>
+                <td>2 MS; 4STA Cost</td>
+                <td>3 MS; 7STA Cost</td>
+            </tr>
+       </table>
+
+       <table>
+            <tr>
+                <th> </th>
+                <th>Qucik</th>
+                <th>Normal</th>
+                <th>Steady</th>
+                <th>Charged</th>
+                <th>Dual wield</th>
+            </tr>
+            <tr>
+                <td>Attack</td>
+                <td>2AP; 1STA -2Acc </td>
+                <td>4AP; 1STA -2Acc </td>
+                <td>4AP; 1STA +2Acc </td>
+                <td>4AP; 1STA +20 dmg </td>
+                <td>3AP; 2STA -2Acc </td>
+            </tr>
+       </table>
+
+       <table>
+            <tr>
+                <th>Reactions</th>
+                <th>AP</th>
+                <th>Stamina</th>
+            </tr>
+            <tr>
+                <td>Block (2+Block rating + Blocking proficiency)</td>
+                <td>3</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>Doge (2 + Doge proficiency)</td>
+                <td>3</td>
+                <td>0</td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <th>Pass Round</th>
+                <th>+1STA</th>
+                <th>4AP</th>
+            </tr>
+            <tr>
+                <td>Rest (+crouch)</td>
+                <td>+3 STA </td>
+                <td>1 Turn</td>
+            </tr>
+          
+        </table>
+        <h4>Spending 7AP per turn = -1 STA </h4>
+        <h4>Spending 8AP per turn = -2 STA </h4>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Injuries</mat-panel-title>
+        </mat-expansion-panel-header>
+        <li>Leg - each injury lowers MS by 1/4 of the starting value. </li>
+        <li>Arm - 1st injury lowers all actions with that arm (standard checks are 2-handed) by -2. 2nd injury makes the arm unusable. </li>
+        <li>Head - 1st concussion -1 to all rolls, 2nd = -3 to all rolls, 3rd = fall unconsciouss.  </li>
+        <li>Body (if threshold is reached, and TGH 13+ is failed; the effects are halved if successful): </li>
+            <ul>
+                <li>Physical (piercing/slashing/blunt): Take 1D6 damage (double on 2nd, triple on 3rd injury in the body) </li>
+                <li>Elemental: Lose 1 Stamina (double on 2nd, triple on 3rd injury in the body) Numbers are always floored. </li>
+            </ul>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Stamina adverse effects</mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+            <li>Winded (5 Stamina) - reduces all stats by 1 </li>
+            <li>Tired (3Stamina) - reduces all stats by 3 </li>
+            <li>Fatigued (1Stamina) - reduces all stats by 6  </li>
+            <li>Black-out (0 Stamina) - incapacitated for 1 turn. Mandatory rest (or other means, like adrenaline  shot) the following turn to recharge stamina.  </li>
+
+        </ul>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Standart components</mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+            <li>Rock (below 1-z level) - provides a half-cover (blocks legs as target) if the line passes through the component and the defender is positioned in a micro-tile neighboring the tree component (diagonal as well). </li>
+            <li>Rock (1-z level and above) - provides a full LoS block if the line passes through the component. </li>
+            <li>Tree - provides a full LoS block if the line passes through the component and the defender is positioned in a micro-tile neighboring the tree component (diagonal as well). </li>
+            <li>Bush - provides a passive -2 on all ranged attacks against you, and +4 Stealth, when a character is positioned in a micro-tile neighboring the tree component (diagonal as well). </li>
+            <li>Difficult terrain (rocky micro-tiles, window-entry, moving over rocks, etc.) - moving over a difficult terrain micro-tile costs double the MS. </li>
+            <li>Explosive barrel (body modifier) - can be moved (double MS while carrying, or 2-manned for no penalty). If ignited by an attack or a chain reaction, deal HE granade damage. </li>
+            <li>Loot pile/crates - Depending on the size (n) of the loot, roll n D100, each roll corresponds to an item from the armory. </li>
+
+        </ul>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Climbing</mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+            <li>Up/down a ladder - normal MS if successful, double if not, fall at 1. </li>
+            <li>Up a climbable wall - double MS if successful, 3AP nothing happens if not.</li>
+            <li>Down a climbable wall - double MS if succesful, fall damage if not </li>
+            <li>Up a vertical wall - not possible without equipment/profs </li>
+            <li>Down a vertical wall - fall damage, reduced if check is succesful</li>
+            <ul>
+                <li>only damage at 1, from z-level 1  </li>
+            </ul>
+        </ul>
+        <p>A character cannot be left climbing when his initiative ends.</p>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>General proficiency checks</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>(STR/DEX) cost 3AP and 0STA; Each check can be done quickly (2AP; -2) or steadily (4AP; +2) </p>
+        <p>There could complimentary secondary checks that do not cost AP and are a part of another event (Climbing, Reach, etc.) </p>
+        <ul>
+            <li>Lookout - increases passive perception by 5 for the turn (2AP) </li>
+            <li>Hide - increase passive stealth (next to a wall/component) by 5 for the turn (2AP) </li>
+            <li>Take cover - uses half cover or a tree to apply -3 on all ranged attacks against you (2AP) +crouch </li>
+            <li>Loot - 1AP to open, 1 AP to pick-up </li>
+            <li>Change equipment - 1 AP to unequip and 1 to equip, 1 AP to change holding arm </li>
+            <li>Watchout - A character can choose either a line starting from his position, or 3 connected micro-tiles in vision. If an enemy character enters any of the selected micro-tiles, the character who is on the watchout, can use Reaction to attack them.</li>
+        </ul>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Wrestle</mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+            <li>Melee range, both characters should either unequip their hands, or drop the equipment on the ground. A character might decide to not participate in the wrestle, keeps his weapons and choose to attack afterwards.   </li>
+            <li>DEX contest (0AP, attacker has +2).  </li>
+            <li>If the defender is "caught", a MMA (+1/2 TGH) contest can be initiated by any of the 2 characters (2,3,4 AP; -2,0,+2 modifier). The contest is scored in the following way: </li>
+                <ul>
+                  <li>0-4 - no change </li> 
+                  <li>5-9 - +1 contest point </li> 
+                  <li>10-14 - +2 contest points </li> 
+                  <li>15+ - +3 contest points </li> 
+                </ul>
+            <li>Each contest point applies -2 to all next contests as well as attacks. 2H weapons are not usable if wrestled. </li>
+            <li>If 5 contest points are reached, the attacker can choose to remain in the wrestle or incapacitate the target for 1 turn. The target has the Fatigued-Tired-Winded states for the next 3 rounds.  </li>
+            <li>A character can break the wrestling if contest points are at 0 or he has an advantage. A passive DEX contest is required to break it.</li>
+
+        </ul>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Other</mat-panel-title>
+        </mat-expansion-panel-header>
+        <li>Hitting a paralyzed, unconscious target misses only at 1.</li>
+        <li>Granades explode at the end of the round (unlocks throw + movement opportunities)</li>
+    </mat-expansion-panel>
+
+</div>
