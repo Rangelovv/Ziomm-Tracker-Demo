@@ -52,11 +52,16 @@
 .trackerContainer{
     display: inline-flex;
     flex-wrap: wrap;
+    margin-left: 20%;
+    margin-right: 20%;
+    justify-content: center;
 }
+
 .turns{
     display: inline-flex;
     position: relative;
 }
+
 .roundsTracker{
     display:inline-flex;
     justify-content: center;
@@ -66,24 +71,25 @@
     margin-left: 2vh;
 }
 .nextTurn{
-    margin-top: 0.4vh;
+    margin-top: 8%;
     margin-left:1vh;
-
     display:inline-block;
-
 }
-
+.mat-form-field{
+    width: 50%;
+}
 @media (max-width: 590px) {
     .mat-form-field{
         width: 50%;
     }
-    .turns{
-        display: inline-flex;
-        margin-left: 3.5%;
-    }
+    
     .turns h1{
-        font-size: 20px;
-        float: left;
+        font-size: 18px;
+    }
+    .trackerContainer{
+        display: inline-flex;
+        margin-left: 0%;
+        margin-right: 0%;
     }
 
 }

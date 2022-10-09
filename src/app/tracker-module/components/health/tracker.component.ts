@@ -35,7 +35,10 @@ export class TrackerComponent implements OnInit {
   turn:number = 1
   roundOne!:number
   roundTwo!:number
+  roundOneAction!:number
+  roundTwoAction!:number
   roundsSum:number = 0
+
 
 
   //Modify
@@ -111,6 +114,8 @@ export class TrackerComponent implements OnInit {
   apForm = new FormGroup({
     roundOne: new FormControl(''),
     roundTwo: new FormControl(''),
+    roundOneAction: new FormControl(''),
+    roundTwoAction: new FormControl(''),
   })
 
   ngOnInit(): void {
@@ -158,9 +163,10 @@ export class TrackerComponent implements OnInit {
   
   onSubmit(){
    
-
     this.roundOne = this.apForm.value.roundOne
     this.roundTwo = this.apForm.value.roundTwo
+    this.roundOneAction = this.apForm.value.roundOneAction
+    this.roundTwoAction = this.apForm.value.roundTwoAction
     this.roundsSum = this.roundOne + this.roundTwo
 
     if(this.roundsSum == 7){
@@ -180,6 +186,8 @@ export class TrackerComponent implements OnInit {
     let log: LogModel= {
       roundOne: this.apForm.value.roundOne,
       roundTwo: this.apForm.value.roundTwo,
+      roundOneAction: this.apForm.value.roundOneAction,
+      roundTwoAction: this.apForm.value.roundTwoAction,
       turnNumber: this.turn - 1,
       staminaSpent: this.stSpent,
       overallAP:this.roundsSum
@@ -188,7 +196,7 @@ export class TrackerComponent implements OnInit {
 
     this.apForm.reset()
 
-    console.log(this.logs)
+    console.log(this.roundOneAction, this.roundTwoAction)
   }
 
   bodyDown(){

@@ -12,14 +12,71 @@
                 </div>
                 <div class="roundsTracker">
                     <form class="example-form" [formGroup]="apForm">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Round 1</mat-label>
-                        <input  #newItem type="number" matInput formControlName="roundOne">
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Round 2</mat-label>
-                        <input  type="number" matInput formControlName="roundTwo">
-                    </mat-form-field>
+                        <div class="roundOne">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Round 1</mat-label>
+                                <input  #newItem type="number" matInput formControlName="roundOne">
+                            </mat-form-field>
+                        
+                            <mat-form-field appearance="fill">
+                                <mat-label>Round 2</mat-label>
+                                <input  type="number" matInput formControlName="roundTwo">
+                            </mat-form-field>
+                        </div>
+                        
+                        <div class="actions">
+                            <mat-form-field>
+                                <mat-label>Actions</mat-label>
+                                <mat-select formControlName="roundOneAction">
+                                    <mat-optgroup label="Movement Actions">
+                                        <mat-option value="Walk">Walk</mat-option>
+                                        <mat-option value="Run">Run</mat-option>
+                                        <mat-option value="Sprint">Sprint</mat-option>
+                                    </mat-optgroup>
+                                    <mat-optgroup label="Attack Actions">
+                                        <mat-option value="Quick">Quick</mat-option>
+                                        <mat-option value="Normal">Normal</mat-option>
+                                        <mat-option value="Steady">Steady</mat-option>
+                                        <mat-option value="Charged">Charged</mat-option>
+                                        <mat-option value="Dual Wield">Dual Wield</mat-option>
+                                    </mat-optgroup>
+                                    <mat-optgroup label="Reactions">
+                                        <mat-option value="Block">Block</mat-option>
+                                        <mat-option value="Doge">Doge</mat-option>
+                                    </mat-optgroup>
+                                    <mat-optgroup label="Relief">
+                                        <mat-option value="Pass Round">Pass Round</mat-option>
+                                        <mat-option value="Rest">Rest</mat-option>
+                                    </mat-optgroup>
+                                </mat-select>
+                            </mat-form-field>
+        
+                            <mat-form-field>
+                                <mat-label>Actions</mat-label>
+                                <mat-select formControlName="roundTwoAction" >
+                                    <mat-optgroup label="Movement Actions">
+                                        <mat-option value="Walk">Walk</mat-option>
+                                        <mat-option value="Run">Run</mat-option>
+                                        <mat-option value="Sprint">Sprint</mat-option>
+                                    </mat-optgroup>
+                                    <mat-optgroup label="Attack Actions">
+                                        <mat-option value="Quick">Quick</mat-option>
+                                        <mat-option value="Normal">Normal</mat-option>
+                                        <mat-option value="Steady">Steady</mat-option>
+                                        <mat-option value="Charged">Charged</mat-option>
+                                        <mat-option value="Dual Wield">Dual Wield</mat-option>
+                                    </mat-optgroup>
+                                    <mat-optgroup label="Reactions">
+                                        <mat-option value="Block">Block</mat-option>
+                                        <mat-option value="Doge">Doge</mat-option>
+                                    </mat-optgroup>
+                                    <mat-optgroup label="Relief">
+                                        <mat-option value="Pass Round">Pass Round</mat-option>
+                                        <mat-option value="Rest">Rest</mat-option>
+                                    </mat-optgroup>
+                                </mat-select>
+                            </mat-form-field>
+                        </div> 
                     </form>
                     <div class="nextTurn">
                         <button class="nextTurn" mat-mini-fab color="primary" (click)="onSubmit()">
@@ -209,9 +266,9 @@
             </mat-expansion-panel-header>
             <div *ngFor="let log of logs">
                 <h3>Turn {{log.turnNumber}}:</h3>
-                <li >On Round 1 you spent: {{log.roundOne}}AP </li>
-                <li> On Round 2 you spent: {{log.roundTwo}}AP</li>
-                <li>Overall: {{log.overallAP}}AP; {{log.staminaSpent}} Stamina </li>
+                <li >On Round 1 you performed {{log.roundOneAction}} and spent {{log.roundOne}}AP </li>
+                <li >On Round 2 you performed {{log.roundTwoAction}} and spent {{log.roundTwo}}AP </li>
+                <li>Overall: {{log.overallAP}}AP; {{log.staminaSpent}} Stamina Spent </li>
                 <mat-divider></mat-divider>
             </div>
         </mat-expansion-panel>
