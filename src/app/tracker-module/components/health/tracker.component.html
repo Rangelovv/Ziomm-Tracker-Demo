@@ -11,23 +11,11 @@
                     <h1>Turn {{turn}}</h1>
                 </div>
                 <div class="roundsTracker">
-                    <form class="example-form" [formGroup]="apForm">
-                        <div class="roundOne">
-                            <mat-form-field appearance="fill">
-                                <mat-label>Round 1</mat-label>
-                                <input  #newItem type="number" matInput formControlName="roundOne">
-                            </mat-form-field>
-                        
-                            <mat-form-field appearance="fill">
-                                <mat-label>Round 2</mat-label>
-                                <input  type="number" matInput formControlName="roundTwo">
-                            </mat-form-field>
-                        </div>
-                        
+                    <form class="example-form" [formGroup]="apForm">  
                         <div class="actions">
                             <mat-form-field>
-                                <mat-label>Actions</mat-label>
-                                <mat-select formControlName="roundOneAction">
+                                <mat-label>Round 1 Action</mat-label>
+                                <mat-select (valueChange)="onRoundOneSelect($event)" formControlName="roundOneAction">
                                     <mat-optgroup label="Movement Actions">
                                         <mat-option value="Walk">Walk</mat-option>
                                         <mat-option value="Run">Run</mat-option>
@@ -52,8 +40,8 @@
                             </mat-form-field>
         
                             <mat-form-field>
-                                <mat-label>Actions</mat-label>
-                                <mat-select formControlName="roundTwoAction" >
+                                <mat-label>Round 2 Action</mat-label>
+                                <mat-select (valueChange)="onRoundOneSelect($event)" formControlName="roundTwoAction" >
                                     <mat-optgroup label="Movement Actions">
                                         <mat-option value="Walk">Walk</mat-option>
                                         <mat-option value="Run">Run</mat-option>
@@ -77,6 +65,17 @@
                                 </mat-select>
                             </mat-form-field>
                         </div> 
+                        <div class="roundOne">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Round 1 AP</mat-label>
+                                <input  #newItem type="number" matInput formControlName="roundOne">
+                            </mat-form-field>
+                        
+                            <mat-form-field appearance="fill">
+                                <mat-label>Round 2 AP</mat-label>
+                                <input  type="number" matInput formControlName="roundTwo">
+                            </mat-form-field>
+                        </div>
                     </form>
                     <div class="nextTurn">
                         <button class="nextTurn" mat-mini-fab color="primary" (click)="onSubmit()">

@@ -107,6 +107,7 @@ export class TrackerComponent implements OnInit {
     logs!: LogModel[]
     stSpent!:number
 
+    selected!:string
     
 
   constructor() { }
@@ -118,6 +119,16 @@ export class TrackerComponent implements OnInit {
     roundOneAction: new FormControl(''),
     roundTwoAction: new FormControl(''),
   })
+
+  onRoundOneSelect(actionSelected:string){
+    if(actionSelected == "Rest"){
+      this.apForm.patchValue({roundOne:0})
+      this.apForm.patchValue({roundTwo:0})
+      this.apForm.patchValue({roundTwoAction: "Rest"})
+      this.apForm.patchValue({roundOneAction: "Rest"})
+    }
+
+  }
 
   ngOnInit(): void {
     this.currentHealth = this.totalHealth
