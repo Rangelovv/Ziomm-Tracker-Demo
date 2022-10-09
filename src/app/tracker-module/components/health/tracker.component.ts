@@ -36,8 +36,8 @@ export class TrackerComponent implements OnInit {
   turn:number = 1
   roundOne!:number
   roundTwo!:number
-  roundOneAction!:number
-  roundTwoAction!:number
+  roundOneAction!:string
+  roundTwoAction!:string
   roundsSum:number = 0
 
 
@@ -93,7 +93,7 @@ export class TrackerComponent implements OnInit {
     staminaSecond:boolean = false
     staminaThird:boolean = false
     staminaFourth:boolean = false
-    staminaFull:boolean = true
+    staminaFull!:boolean;
 
     msFinished:boolean = false
     msFull:boolean = true
@@ -107,10 +107,10 @@ export class TrackerComponent implements OnInit {
     logs!: LogModel[]
     stSpent!:number
 
+    
+
   constructor() { }
 
-
- 
 
   apForm = new FormGroup({
     roundOne: new FormControl(''),
@@ -130,8 +130,11 @@ export class TrackerComponent implements OnInit {
     this.currentStamina = this.stamina
     this.currentMS = this.ms
 
+   
+    if(this.currentStamina == this.stamina){
+      this.staminaFull = true
+    }
 
-  
     if(this.currentStamina == this.stamina){
       this.staminaFull = true
     }
@@ -157,6 +160,7 @@ export class TrackerComponent implements OnInit {
     if(this.rlegBrokenFirst == true){
       this.currentMS = this.currentMS / 2
     }
+    
 
     this.logs = this.returnLog()
  }
@@ -164,26 +168,98 @@ export class TrackerComponent implements OnInit {
   
   onSubmit(){
    
+    //Form values
     this.roundOne = this.apForm.value.roundOne
     this.roundTwo = this.apForm.value.roundTwo
     this.roundOneAction = this.apForm.value.roundOneAction
     this.roundTwoAction = this.apForm.value.roundTwoAction
     this.roundsSum = this.roundOne + this.roundTwo
 
+    //Stamina according to the AP spent & the action done
     if(this.roundsSum == 7){
       this.currentStamina = this.currentStamina - 1
       this.stSpent = 1
+      this.staminaFull = false
     }
     if(this.roundsSum == 8){
       this.currentStamina = this.currentStamina - 2
       this.stSpent = 2
+      this.staminaFull = false
     }
     if(this.roundsSum <= 6){
       this.stSpent = 0
     }
+   
+    //Round One Actions
+    if(this.roundOneAction == "Quick"){
+        this.stSpent = this.stSpent + 1
+        this.currentStamina = this.currentStamina - 1
+        this.staminaFull = false
+    }
+    if(this.roundOneAction == "Normal"){
+      this.stSpent = this.stSpent + 1
+      this.currentStamina = this.currentStamina - 1
+      this.staminaFull = false
+    }
+    if(this.roundOneAction == "Steady"){
+      this.stSpent = this.stSpent + 1
+      this.currentStamina = this.currentStamina - 1
+      this.staminaFull = false
+    }
+    if(this.roundOneAction == "Charged"){
+      this.stSpent = this.stSpent + 1
+      this.currentStamina = this.currentStamina - 1
+      this.staminaFull = false
+    }
+    if(this.roundOneAction == "Dual Wield"){
+      this.stSpent = this.stSpent + 2
+      this.currentStamina = this.currentStamina - 2
+      this.staminaFull = false
+    }
+    if(this.roundOneAction == "Run" && this.roundOne == 1){
+      this.stSpent = this.stSpent + 1
+      this.currentStamina = this.currentStamina - 1
+      this.staminaFull = false
+    }
+    if(this.roundOneAction == "Run" && this.roundOne == 2){
+      this.stSpent = this.stSpent + 2
+      this.currentStamina = this.currentStamina - 2
+      this.staminaFull = false
+    }
+    if(this.roundOneAction == "Run" && this.roundOne == 4){
+      this.stSpent = this.stSpent + 3
+      this.currentStamina = this.currentStamina - 3
+      this.staminaFull = false
+    }
+    if(this.roundOneAction == "Sprint" && this.roundOne == 1){
+      this.stSpent = this.stSpent + 3
+      this.currentStamina = this.currentStamina - 3
+      this.staminaFull = false
+    }
+    if(this.roundOneAction == "Sprint" && this.roundOne == 2){
+      this.stSpent = this.stSpent + 4
+      this.currentStamina = this.currentStamina - 4
+      this.staminaFull = false
+    }
+    if(this.roundOneAction == "Sprint" && this.roundOne == 4){
+      this.stSpent = this.stSpent + 7
+      this.currentStamina = this.currentStamina - 7
+      this.staminaFull = false
+    }
+    if(this.roundOneAction == "Pass Round" ){
+      this.stSpent = this.stSpent + 0
+      this.currentStamina = this.currentStamina + 1
+    }
+    if(this.roundOneAction == "Rest" && this.roundOneAction == "Rest"){
+      this.stSpent = this.stSpent + 0
+      this.currentStamina = this.currentStamina + 3
+    }
 
+
+    //Next Turn
     this.turn = this.turn + 1
 
+    //New Log Object
     let log: LogModel= {
       roundOne: this.apForm.value.roundOne,
       roundTwo: this.apForm.value.roundTwo,
@@ -194,10 +270,7 @@ export class TrackerComponent implements OnInit {
       overallAP:this.roundsSum
     }
     this.addTurn(log)
-
     this.apForm.reset()
-
-    console.log(this.roundOneAction, this.roundTwoAction)
   }
 
   bodyDown(){

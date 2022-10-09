@@ -18,3 +18,13 @@ table {
     text-align: left;
     padding: 8px;
   }
+  @media (max-width: 600px) {
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 90%;
+        margin-bottom: 5%;
+        padding-left: 10%;
+      }
+   
+}
