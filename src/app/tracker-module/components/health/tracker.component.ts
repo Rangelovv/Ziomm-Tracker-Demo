@@ -120,15 +120,7 @@ export class TrackerComponent implements OnInit {
     roundTwoAction: new FormControl(''),
   })
 
-  onRoundOneSelect(actionSelected:string){
-    if(actionSelected == "Rest"){
-      this.apForm.patchValue({roundOne:0})
-      this.apForm.patchValue({roundTwo:0})
-      this.apForm.patchValue({roundTwoAction: "Rest"})
-      this.apForm.patchValue({roundOneAction: "Rest"})
-    }
 
-  }
 
   ngOnInit(): void {
     this.currentHealth = this.totalHealth
@@ -581,5 +573,71 @@ export class TrackerComponent implements OnInit {
   returnLog(){
     return this.turnsLog;
   }
+
+  onRoundOneSelect(actionSelected:string){
+    if(actionSelected == "Rest"){
+      this.apForm.patchValue({roundTwoAction: "Rest"})
+      this.apForm.patchValue({roundOne:0})
+      this.apForm.patchValue({roundTwo:0})
+    }
+    if(actionSelected == "Pass Round"){
+      this.apForm.patchValue({roundOne:4})
+    }
+    if(actionSelected == "Block"){
+      this.apForm.patchValue({roundOne:3})
+    }
+    if(actionSelected == "Dodge"){
+      this.apForm.patchValue({roundOne:3})
+    }
+    if(actionSelected == "Quick"){
+      this.apForm.patchValue({roundOne:2})
+    }
+    if(actionSelected == "Normal"){
+      this.apForm.patchValue({roundOne:4})
+    }
+    if(actionSelected == "Steady"){
+      this.apForm.patchValue({roundOne:4})
+    }
+    if(actionSelected == "Charged"){
+      this.apForm.patchValue({roundOne:4})
+    }
+    if(actionSelected == "Dual Wield"){
+      this.apForm.patchValue({roundOne:3})
+    }
+
+  }
+  onRoundTwoSelect(actionSelected:string){
+    if(actionSelected == "Rest"){
+      this.apForm.patchValue({roundOneAction: "Rest"})
+      this.apForm.patchValue({roundOne:0})
+      this.apForm.patchValue({roundTwo:0})
+    }
+    if(actionSelected == "Pass Round"){
+      this.apForm.patchValue({roundTwo:4})
+    }
+    if(actionSelected == "Block"){
+      this.apForm.patchValue({roundTwo:3})
+    }
+    if(actionSelected == "Dodge"){
+      this.apForm.patchValue({roundTwo:3})
+    }
+    if(actionSelected == "Quick"){
+      this.apForm.patchValue({roundTwo:2})
+    }
+    if(actionSelected == "Normal"){
+      this.apForm.patchValue({roundTwo:4})
+    }
+    if(actionSelected == "Steady"){
+      this.apForm.patchValue({roundTwo:4})
+    }
+    if(actionSelected == "Charged"){
+      this.apForm.patchValue({roundTwo:4})
+    }
+    if(actionSelected == "Dual Wield"){
+      this.apForm.patchValue({roundTwo:3})
+    }
+
+  }
+
 
 }
