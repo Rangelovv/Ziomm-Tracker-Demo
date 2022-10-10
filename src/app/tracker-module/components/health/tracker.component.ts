@@ -106,6 +106,7 @@ export class TrackerComponent implements OnInit {
     turnsLog: LogModel[] = []    
     logs!: LogModel[]
     stSpent!:number
+    stLeft!:number
 
     selected!:string
     
@@ -164,6 +165,7 @@ export class TrackerComponent implements OnInit {
       this.currentMS = this.currentMS / 2
     }
     
+    
 
     this.logs = this.returnLog()
  }
@@ -192,7 +194,11 @@ export class TrackerComponent implements OnInit {
     if(this.roundsSum <= 6){
       this.stSpent = 0
     }
+
    
+  
+
+
     //Round One Actions
     if(this.roundOneAction == "Quick"){
         this.stSpent = this.stSpent + 1
@@ -258,6 +264,70 @@ export class TrackerComponent implements OnInit {
       this.currentStamina = this.currentStamina + 3
     }
 
+    //Round Two Actions
+    if(this.roundTwoAction == "Quick"){
+      this.stSpent = this.stSpent + 1
+      this.currentStamina = this.currentStamina - 1
+      this.staminaFull = false
+    }
+    if(this.roundTwoAction == "Normal"){
+    this.stSpent = this.stSpent + 1
+    this.currentStamina = this.currentStamina - 1
+    this.staminaFull = false
+    }
+    if(this.roundTwoAction == "Steady"){
+    this.stSpent = this.stSpent + 1
+    this.currentStamina = this.currentStamina - 1
+    this.staminaFull = false
+    }
+    if(this.roundTwoAction == "Charged"){
+    this.stSpent = this.stSpent + 1
+    this.currentStamina = this.currentStamina - 1
+    this.staminaFull = false
+    }
+    if(this.roundTwoAction == "Dual Wield"){
+    this.stSpent = this.stSpent + 2
+    this.currentStamina = this.currentStamina - 2
+    this.staminaFull = false
+    }
+    if(this.roundTwoAction == "Run" && this.roundTwo == 1){
+    this.stSpent = this.stSpent + 1
+    this.currentStamina = this.currentStamina - 1
+    this.staminaFull = false
+    }
+    if(this.roundTwoAction == "Run" && this.roundTwo == 2){
+    this.stSpent = this.stSpent + 2
+    this.currentStamina = this.currentStamina - 2
+    this.staminaFull = false
+    }
+    if(this.roundTwoAction == "Run" && this.roundTwo == 4){
+    this.stSpent = this.stSpent + 3
+    this.currentStamina = this.currentStamina - 3
+    this.staminaFull = false
+    }
+    if(this.roundTwoAction == "Sprint" && this.roundTwo == 1){
+    this.stSpent = this.stSpent + 3
+    this.currentStamina = this.currentStamina - 3
+    this.staminaFull = false
+    }
+    if(this.roundTwoAction == "Sprint" && this.roundTwo == 2){
+    this.stSpent = this.stSpent + 4
+    this.currentStamina = this.currentStamina - 4
+    this.staminaFull = false
+    }
+    if(this.roundTwoAction == "Sprint" && this.roundTwo == 4){
+    this.stSpent = this.stSpent + 7
+    this.currentStamina = this.currentStamina - 7
+    this.staminaFull = false
+    }
+    if(this.roundTwoAction == "Pass Round" ){
+    this.stSpent = this.stSpent + 0
+    this.currentStamina = this.currentStamina + 1
+    }
+    if(this.roundTwoAction == "Rest" && this.roundTwoAction == "Rest"){
+    this.stSpent = this.stSpent + 0
+    this.currentStamina = this.currentStamina + 3
+    }
 
     //Next Turn
     this.turn = this.turn + 1
@@ -274,6 +344,32 @@ export class TrackerComponent implements OnInit {
     }
     this.addTurn(log)
     this.apForm.reset()
+
+    if(this.currentStamina <= 5){
+      this.staminaFirst = true
+      this.currentState = "Winded (reduces all stats by 1)"
+    }
+    if(this.currentStamina <= 3){
+      this.staminaFirst = true
+      this.staminaSecond = true
+      this.currentState = "Tired  (reduces all stats by 3)"
+    }
+    if(this.currentStamina <= 1){
+      this.staminaFirst = true
+      this.staminaSecond = true
+      this.staminaThird = true
+      this.currentState = "Fatigued (reduces all stats by 6)"
+    }
+    if(this.currentStamina <= 0){
+      this.staminaFirst = true
+      this.staminaSecond = true
+      this.staminaThird = true
+      this.staminaFourth = true
+      this.staminaFinished = true
+      this.currentStamina = 0
+      this.currentState = "Black-out (incapacitated for 1 turn.)"
+    }
+    console.log(this.currentStamina)
   }
 
   bodyDown(){
@@ -408,6 +504,7 @@ export class TrackerComponent implements OnInit {
       this.llegFull = false
     }
   }
+
   staminaDown(){
     this.currentStamina = this.currentStamina - 1
     this.staminaFull = false
