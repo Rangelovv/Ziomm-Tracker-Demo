@@ -8,11 +8,12 @@ import { CharacterModel } from '../../models/character.model';
 })
 export class ExistingCharactersComponent implements OnInit {
   characters?: CharacterModel[];
-
+  characters1?: CharacterModel[];
   constructor(private charService:CharactersService) { }
 
   ngOnInit(): void {
     this.characters = this.charService.returnExistingCharacters();
+    this.charService.returnFRChars().subscribe((res:CharacterModel[])=>{this.characters1 = res})
   }
 
 }

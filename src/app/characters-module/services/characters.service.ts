@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CharacterModel } from '../models/character.model';
-
+import { Firestore } from '@angular/fire/firestore';
+import { collection } from '@angular/fire/firestore';
+import { addDoc } from '@angular/fire/firestore';
+import { collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,22 +20,28 @@ export class CharactersService {
   ]
   
 
-  constructor() { }
+  constructor(private fr:Firestore) { }
 
   returnExistingCharacters(){
     return this.characters;
-
   }
   
   returnActiveCharacters(){
     return this.charactersCopy;
   }
  
+  returnFRChars():Observable<CharacterModel[]>{
+    const booksRef = collection(this.fr, 'characters');
+    return collectionData(booksRef, { idField: 'id' }) as Observable<CharacterModel[]>;
+  }
   
 
   addCharacter(character: CharacterModel){
     this.characters.push(character)
     this.charactersCopy.push(character)
+    const booksRef = collection(this.fr, 'characters'); 
+    return addDoc(booksRef, character);
+
   }
 
  
