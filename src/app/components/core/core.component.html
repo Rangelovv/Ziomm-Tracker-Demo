@@ -3,8 +3,18 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="opened =! opened">
       <mat-icon>menu</mat-icon>
     </button>
-    <span class="example-spacer"></span>
+
     <span routerLink="landing" (click)="closeSidenavOnRouting()"> Ziomm App Beta </span>
+
+    <span class="example-spacer"></span>
+
+    <ng-container *ngIf="(pictureUrl$ | async) as pictureUrl" >
+      <img class="userAvatar" [src]="pictureUrl">
+    </ng-container>
+    <ng-container *ngIf="(username$ | async) as username" >
+      <h2>{{username}}</h2>
+    </ng-container>
+
   </mat-toolbar>
 
 
@@ -13,6 +23,9 @@
   <mat-sidenav [opened]="opened" mode="push" autoFocus="false"  >
     <mat-action-list>
       <button mat-list-item *ngFor="let item of elements" [routerLink]=[item.link] (click)="closeSidenavOnRouting()" > {{item.name}} </button>
+      <button  mat-list-item routerLink="login" (click)="closeSidenavOnRouting()" *ngIf="isLoggedOut$ | async" > Login </button>
+      <button  mat-list-item (click)="logout();closeSidenavOnRouting() "  *ngIf="isLoggedIn$ | async" > Logout </button>
+
     </mat-action-list>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -5,9 +5,7 @@ import { LogModel } from '../models/turn.model';
 })
 export class LogService {
 
-  turnsLog: LogModel[] = [
-   
-  ]
+  turnsLog: LogModel[] = []
 
   
 

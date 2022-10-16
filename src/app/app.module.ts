@@ -7,9 +7,16 @@ import { MaterialModule } from './material-module/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LandingComponent } from './components/landing/landing.component';
 import { CoreComponent } from './components/core/core.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
+
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth} from '@angular/fire/auth';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,12 +28,14 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
+    AngularFireAuthModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore())
-
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()), 
+    ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [{provide: FIREBASE_OPTIONS, useValue: environment.firebase} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

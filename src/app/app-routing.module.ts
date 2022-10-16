@@ -18,7 +18,12 @@ const routes: Routes = [
   },
   {
     path:"tracker",
-    loadChildren: () =>import('./tracker-module/tracker.module').then(m=>m.TrackerModule)  },
+    loadChildren: () =>import('./tracker-module/tracker.module').then(m=>m.TrackerModule)  
+  },
+  {
+    path:"login",
+    loadChildren: () =>import('src/app/login-module/login.module').then(m=>m.LoginModule)  
+  },
 ];
 
 @NgModule({
