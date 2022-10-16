@@ -4,7 +4,10 @@ import { Firestore } from '@angular/fire/firestore';
 import { collection } from '@angular/fire/firestore';
 import { addDoc } from '@angular/fire/firestore';
 import { collectionData } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { UserService } from 'src/app/service/user.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { map, Observable, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,26 +24,30 @@ export class CharactersService {
   ]
   
 
-  constructor(private fr:Firestore) { }
+  constructor(private fr:Firestore, private user:UserService, private afAuth: AngularFireAuth, private afs:AngularFirestore) { }
 
-  returnExistingCharacters(){
-    return this.characters;
-  }
+  
   
   returnActiveCharacters(){
     return this.charactersCopy;
   }
- 
-  returnFRChars():Observable<CharacterModel[]>{
-    const booksRef = collection(this.fr, 'characters');
+  
+  returnExistingCharacters():Observable<CharacterModel[]>{
+    const booksRef = collection(this.fr, `users/${this.user.uid}/characters/`);
     return collectionData(booksRef, { idField: 'id' }) as Observable<CharacterModel[]>;
   }
-  
+
+  returnFRChars():Observable<CharacterModel[]>{
+    const booksRef = collection(this.fr, `users/${this.user.uid}/characters/`);
+    return collectionData(booksRef, { idField: 'id' }) as Observable<CharacterModel[]>;
+  }
+
+
 
   addCharacter(character: CharacterModel){
     this.characters.push(character)
     this.charactersCopy.push(character)
-    const booksRef = collection(this.fr, 'characters'); 
+    const booksRef = collection(this.fr, `users/${this.user.uid}/characters`,); 
     return addDoc(booksRef, character);
 
   }

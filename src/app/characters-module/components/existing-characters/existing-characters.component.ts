@@ -7,13 +7,12 @@ import { CharacterModel } from '../../models/character.model';
   styleUrls: ['./existing-characters.component.css']
 })
 export class ExistingCharactersComponent implements OnInit {
-  characters?: CharacterModel[];
   characters1?: CharacterModel[];
-  constructor(private charService:CharactersService) { }
+  constructor(public charService:CharactersService) { }
 
   ngOnInit(): void {
-    this.characters = this.charService.returnExistingCharacters();
-    this.charService.returnFRChars().subscribe((res:CharacterModel[])=>{this.characters1 = res})
+    this.charService.returnExistingCharacters().subscribe((res:CharacterModel[])=>{this.characters1 = res})
+
   }
 
 }

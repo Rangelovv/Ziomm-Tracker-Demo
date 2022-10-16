@@ -13,16 +13,19 @@ export class UserService {
 
 
 
-  uid$ = this.afAuth.authState.pipe(switchMap(user => {
-    if(user){
-        return this.afs.collection('users').doc(`/${user.uid}`).set({
-            name: user.displayName,
-            email: user.email,
-        })    
-        }else{
-        return of(null)
-    }
-  }))
+    uid!:string | null;
+    uid$ = this.afAuth.authState.subscribe(value => value ? this.uid = value.uid : null)
+
+    newUser = this.afAuth.authState.pipe(switchMap(user => {
+        if(user){
+                return this.afs.collection('users').doc(`/${this.uid}`).set({
+                    name: user.displayName,
+                    email: user.email,
+                })    
+                }else{
+                return of(null)
+            }
+        }))
 
 
 

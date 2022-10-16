@@ -21,7 +21,6 @@ export class CoreComponent implements OnInit {
 
   constructor(private afAuth: AngularFireAuth, public users:UserService) { }
 
-  uid = this.users.uid$
 
 
   ngOnInit(): void {
@@ -30,9 +29,8 @@ export class CoreComponent implements OnInit {
       this.isLoggedOut$ = this.isLoggedIn$.pipe(map(loggedIn => !loggedIn));
       this.pictureUrl$ = this.afAuth.authState.pipe(map(user => user ? user.photoURL : null))
       this.username$ = this.afAuth.authState.pipe(map(name =>name ? name.displayName : null))
-      
+  
       this.uid$ = this.afAuth.authState.pipe(map(name =>name ? name.uid : null))
-
       
     }
 

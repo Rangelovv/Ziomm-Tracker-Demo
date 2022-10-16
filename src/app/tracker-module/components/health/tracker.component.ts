@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup,  FormControl, NgForm, Validators } from '@angular/forms';
 import { LogService } from 'src/app/characters-module/services/log.service';
 import { LogModel } from 'src/app/characters-module/models/turn.model';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-tracker',
