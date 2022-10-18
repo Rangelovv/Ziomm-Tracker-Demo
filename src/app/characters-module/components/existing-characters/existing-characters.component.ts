@@ -27,7 +27,7 @@ export class ExistingCharactersComponent implements OnInit {
   }
 
   reloadCharacters(){
-   this.characters = this.charService.loadCharacters()
+   this.characters = this.charService.returnCharacters()
   }
   
 

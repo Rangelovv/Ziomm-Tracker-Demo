@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CharacterModel } from '../models/character.model';
-import { Firestore } from '@angular/fire/firestore';
+import { Firestore, snapToData } from '@angular/fire/firestore';
 import { collection } from '@angular/fire/firestore';
 import { addDoc } from '@angular/fire/firestore';
 import { collectionData } from '@angular/fire/firestore';
@@ -19,25 +19,19 @@ export class CharactersService {
   
 
 
-  returnFRChars():Observable<CharacterModel[]>{
+  returnActiveCharacters():Observable<CharacterModel[]>{
     let uid = localStorage.getItem('uid')
-    const booksRef = collection(this.fr, `users/${uid}/characters/`);
-    return collectionData(booksRef, { idField: 'id' }) as Observable<CharacterModel[]>;
+    const charCollection = this.afs.collection<CharacterModel>(`users/${uid}/characters/`)
+    return charCollection.valueChanges()
   }
 
-  loadCharacters(): Observable<CharacterModel[]>{
+  returnCharacters():Observable<CharacterModel[]>{
     let uid = localStorage.getItem('uid')
-    return this.afs.collection(`users/${uid}/characters/`).get().pipe(map(results => {
-      return results.docs.map(snap => {
-        return {
-          ...<any>snap.data()
-        }
-      })
-    }))
+    const charCollection = this.afs.collection<CharacterModel>(`users/${uid}/characters/`)
+    return charCollection.valueChanges()
   }
 
- 
- 
+
 
   addCharacter(character: CharacterModel){
     let uid = localStorage.getItem('uid')

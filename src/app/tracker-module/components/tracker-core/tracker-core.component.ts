@@ -22,7 +22,7 @@ export class TrackerCoreComponent implements OnInit {
 
       //getting the charachters
       this.logger = this.logService.returnLog();
-      this.trcharService.returnFRChars().subscribe((res:CharacterModel[])=>{this.trackingCharacters1 = res})
+      this.trcharService.returnActiveCharacters().subscribe((res:CharacterModel[])=>{this.trackingCharacters1 = res})
 
     
       
