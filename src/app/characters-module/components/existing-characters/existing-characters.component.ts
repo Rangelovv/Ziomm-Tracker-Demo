@@ -13,8 +13,6 @@ export class ExistingCharactersComponent implements OnInit {
   characters1?: CharacterModel[];
 
   characters!: Observable<CharacterModel[]>
-  userUID!: any
-  neshto!:string | null
   constructor(public charService:CharactersService,public afAuth:AngularFireAuth, public user:UserService) {
 
 
@@ -25,8 +23,7 @@ export class ExistingCharactersComponent implements OnInit {
 
   ngOnInit(): void {
     this.reloadCharacters();
-    this.user.currentUser$.subscribe(user =>  {this.userUID = user?.uid;  localStorage.setItem('uid', this.userUID)})
-    this.neshto = localStorage.getItem('uid')
+ 
   }
 
   reloadCharacters(){

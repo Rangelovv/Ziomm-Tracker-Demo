@@ -11,6 +11,7 @@ import { Auth, user } from '@angular/fire/auth';
   styleUrls: ['./login-screen.component.css']
 })
 export class LoginScreenComponent implements OnInit, OnDestroy {
+  
   ui!: firebaseui.auth.AuthUI;
 
   constructor(private afAuth: AngularFireAuth, private router:Router, public auth: Auth) { }

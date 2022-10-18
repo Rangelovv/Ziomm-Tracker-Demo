@@ -23,6 +23,8 @@ export class CoreComponent implements OnInit {
 
   createUD = this.users.createUserDocument
   uid!:string | undefined;
+  userUID!: any
+  neshto!:string | null
 
   ngOnInit(): void {
       this.afAuth.authState.subscribe(user =>user);
@@ -31,7 +33,9 @@ export class CoreComponent implements OnInit {
       this.pictureUrl$ = this.afAuth.authState.pipe(map(user => user ? user.photoURL : null))
       this.username$ = this.afAuth.authState.pipe(map(name =>name ? name.displayName : null))
       this.uid$ = this.afAuth.authState.pipe(map(name =>name ? this.uid = name.uid : null))
-      
+      this.users.currentUser$.subscribe(user =>  {this.userUID = user?.uid;  localStorage.setItem('uid', this.userUID)})
+      this.neshto = localStorage.getItem('uid')
+      console.log(this.neshto)
     }
 
  
@@ -42,5 +46,6 @@ export class CoreComponent implements OnInit {
 
   logout(){
     this.afAuth.signOut();
+    localStorage.clear();
   }
 }
