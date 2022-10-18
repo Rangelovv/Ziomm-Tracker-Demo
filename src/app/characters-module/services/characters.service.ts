@@ -14,40 +14,34 @@ import { map, Observable, of, switchMap } from 'rxjs';
 })
 export class CharactersService {
 
-  characters: CharacterModel[] = [
-    {name:"Sasho", tribe: "Planeta", totalHP:100, headHP:25, bodyHP:15, rarmHP:15, larmHP:15, rlegHP:15, llegHP:15, stamina:9, movementSpeed:14 },
-    {name:"Hakera", tribe: "Madara",totalHP:120, headHP:30, bodyHP:20, rarmHP:20, larmHP:20, rlegHP:20, llegHP:20, stamina:14, movementSpeed:16 },
-  ]
-  charactersCopy: CharacterModel[] = [
-    {name:"Sasho", tribe: "Planeta", totalHP:100, headHP:25, bodyHP:15, rarmHP:15, larmHP:15, rlegHP:15, llegHP:15, stamina:9, movementSpeed:14 },
-    {name:"Hakera", tribe: "Madara",totalHP:120, headHP:30, bodyHP:20, rarmHP:20, larmHP:20, rlegHP:20, llegHP:20, stamina:14, movementSpeed:16 },
-  ]
+
+  constructor(private fr:Firestore, private afs:AngularFirestore) {  }
   
 
-  constructor(private fr:Firestore, private user:UserService, private afAuth: AngularFireAuth, private afs:AngularFirestore) { }
-
-  
-  
-  returnActiveCharacters(){
-    return this.charactersCopy;
-  }
-  
-  returnExistingCharacters():Observable<CharacterModel[]>{
-    const booksRef = collection(this.fr, `users/${this.user.uid}/characters/`);
-    return collectionData(booksRef, { idField: 'id' }) as Observable<CharacterModel[]>;
-  }
 
   returnFRChars():Observable<CharacterModel[]>{
-    const booksRef = collection(this.fr, `users/${this.user.uid}/characters/`);
+    let uid = localStorage.getItem('uid')
+    const booksRef = collection(this.fr, `users/${uid}/characters/`);
     return collectionData(booksRef, { idField: 'id' }) as Observable<CharacterModel[]>;
   }
 
+  loadCharacters(): Observable<CharacterModel[]>{
+    let uid = localStorage.getItem('uid')
+    return this.afs.collection(`users/${uid}/characters/`).get().pipe(map(results => {
+      return results.docs.map(snap => {
+        return {
+          ...<any>snap.data()
+        }
+      })
+    }))
+  }
 
+ 
+ 
 
   addCharacter(character: CharacterModel){
-    this.characters.push(character)
-    this.charactersCopy.push(character)
-    const booksRef = collection(this.fr, `users/${this.user.uid}/characters`,); 
+    let uid = localStorage.getItem('uid')
+    const booksRef = collection(this.fr, `users/${uid}/characters`,); 
     return addDoc(booksRef, character);
 
   }

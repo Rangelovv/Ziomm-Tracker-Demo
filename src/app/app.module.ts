@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LandingComponent } from './components/landing/landing.component';
 import { CoreComponent } from './components/core/core.component';
 import { environment } from '../environments/environment';
+import { UserService } from './service/user.service';
 
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
@@ -35,7 +36,7 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     ReactiveFormsModule
 
   ],
-  providers: [{provide: FIREBASE_OPTIONS, useValue: environment.firebase} ],
+  providers: [{provide: FIREBASE_OPTIONS, useValue: environment.firebase}, UserService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,6 +14,9 @@
     <ng-container *ngIf="(username$ | async) as username" >
       <h2>{{username}}</h2>
     </ng-container>
+    <ng-container *ngIf="(createUD | async) as cru" ><h1>{{cru}}</h1></ng-container>
+    <ng-container *ngIf="(uid$ | async) as uid1" ><h1>{{uid1}}</h1></ng-container>
+
   </mat-toolbar>
 
 

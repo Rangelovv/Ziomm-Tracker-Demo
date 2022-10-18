@@ -21,7 +21,6 @@ export class TrackerCoreComponent implements OnInit {
   ngOnInit(): void {
 
       //getting the charachters
-      this.trackingCharacters = this.trcharService.returnActiveCharacters();
       this.logger = this.logService.returnLog();
       this.trcharService.returnFRChars().subscribe((res:CharacterModel[])=>{this.trackingCharacters1 = res})
 

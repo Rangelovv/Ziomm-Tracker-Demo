@@ -1,6 +1,6 @@
 <div class="panels-container" >
     <mat-accordion>
-            <mat-expansion-panel *ngFor="let character of characters1">
+            <mat-expansion-panel *ngFor="let character of characters | async">
                 <mat-expansion-panel-header>
                     <mat-panel-title>{{character.name}}</mat-panel-title>
                 </mat-expansion-panel-header>

@@ -9,23 +9,37 @@ import { Auth } from '@angular/fire/auth';
 })
 export class UserService {
 
-  constructor(private afAuth: AngularFireAuth, private afs:AngularFirestore, private auth:Auth) { }
+  constructor(private afAuth: AngularFireAuth, private afs:AngularFirestore, private auth:Auth) {
+    
+   }
+   
+   uid!:string | undefined;
+   uid$ = this.afAuth.authState.subscribe(value => value ? this.uid = value.uid : null)
+
+   createUserDocument = this.afAuth.authState.pipe(switchMap(user => {
+    if(user){
+        console.log("neshto")
+        return this.afs.collection('users').doc(`/${user.uid}`).set({
+            name: user.displayName,
+            email: user.email,
+        })    
+        }else{
+        return of(null)
+    }
+  }))
 
 
+  currentUser$ = this.afAuth.authState.pipe(map(user => {
+    if(user){
+        return {uid: user.uid, email:user.email, displayName:user.displayName}
+    }
+    return null
+  }))
 
-    uid!:string | null;
-    uid$ = this.afAuth.authState.subscribe(value => value ? this.uid = value.uid : null)
 
-    newUser = this.afAuth.authState.pipe(switchMap(user => {
-        if(user){
-                return this.afs.collection('users').doc(`/${this.uid}`).set({
-                    name: user.displayName,
-                    email: user.email,
-                })    
-                }else{
-                return of(null)
-            }
-        }))
+  
+   
+    // uid$ = this.afAuth.authState.subscribe(value => value ?  value.uid : null)
 
 
 

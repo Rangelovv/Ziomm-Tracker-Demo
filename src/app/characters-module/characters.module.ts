@@ -6,7 +6,7 @@ import { MaterialModule } from '../material-module/material.module';
 import { CharacterCreationComponent } from './components/character-creation/character-creation.component';
 import { ExistingCharactersComponent } from './components/existing-characters/existing-characters.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { UserService } from '../service/user.service';
 
 @NgModule({
   declarations: [
@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CharachtersRoutingModule,
     MaterialModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: [UserService]
 })
 export class CharactersModule { }
