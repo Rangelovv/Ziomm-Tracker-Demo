@@ -35,6 +35,7 @@ export class CoreComponent implements OnInit {
 
       this.users.currentUser$.subscribe(user =>  {this.userUID = user?.uid;  localStorage.setItem('uid', this.userUID)})
       this.localUserUID = localStorage.getItem('uid')
+      this.users.isLoggedIn()
     }
 
  

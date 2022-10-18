@@ -15,6 +15,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth} from '@angular/fire/auth';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 
@@ -36,7 +37,7 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     ReactiveFormsModule
 
   ],
-  providers: [{provide: FIREBASE_OPTIONS, useValue: environment.firebase}, UserService ],
+  providers: [{provide: FIREBASE_OPTIONS, useValue: environment.firebase}, UserService, AngularFireAuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
