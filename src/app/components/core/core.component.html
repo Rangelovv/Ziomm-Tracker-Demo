@@ -31,7 +31,6 @@
       <button mat-list-item *ngFor="let item of elements" [routerLink]=[item.link] (click)="closeSidenavOnRouting()" > {{item.name}} </button>
       <button  mat-list-item routerLink="login" (click)="closeSidenavOnRouting()" *ngIf="isLoggedOut$ | async" > Login </button>
       <button  mat-list-item (click)="logout();closeSidenavOnRouting() "  *ngIf="isLoggedIn$ | async" > Logout </button>
-
     </mat-action-list>
   </mat-sidenav>
   <mat-sidenav-content>

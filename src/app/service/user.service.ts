@@ -35,18 +35,9 @@ export class UserService {
     return null
   }))
 
-  isLoggedIn(){
-    if(localStorage.getItem('uid') !== null){
-        console.log(localStorage.getItem('uid'))
-        return true
-    }else{
-        console.log("FUCK OFF")
-        return false
-    }
-  }
+
   
    
-    // uid$ = this.afAuth.authState.subscribe(value => value ?  value.uid : null)
 
 
 
