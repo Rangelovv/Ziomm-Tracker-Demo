@@ -8,13 +8,19 @@
 
     <span class="example-spacer"></span>
 
-    <ng-container *ngIf="(pictureUrl$ | async) as pictureUrl" >
-      <img class="userAvatar" [src]="pictureUrl">
-    </ng-container>
-    <ng-container *ngIf="(username$ | async) as username" >
-      <h2>{{username}}</h2>
-    </ng-container>
-
+      <ng-container *ngIf="(pictureUrl$ | async) as pictureUrl" >
+        <img [matMenuTriggerFor]="menu" class="userAvatar" [src]="pictureUrl">
+      </ng-container>
+      <mat-menu #menu="matMenu">
+        <button (click)="logout()" mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    <div class="username">
+     <ng-container *ngIf="(username$ | async) as username"> <h2>{{username}}</h2> </ng-container>
+    </div>
+    
   </mat-toolbar>
 
 

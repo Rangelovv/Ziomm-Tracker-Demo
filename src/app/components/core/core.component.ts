@@ -21,8 +21,6 @@ export class CoreComponent implements OnInit {
 
   constructor(private afAuth: AngularFireAuth, public users:UserService,private router: Router) { }
 
-  createUD = this.users.createUserDocument
-  uid!:string | undefined;
   userUID!: any
   localUserUID!:string | null
 
