@@ -20,10 +20,6 @@ export class TrackerComponent implements OnInit {
   @Input() totalLLeg!:number
   @Input() stamina!:number
   @Input() ms!:number
-  
-
-
-
   currentHealth!:number 
   currentHeadHP!:number 
   currentBodyHP!:number 
