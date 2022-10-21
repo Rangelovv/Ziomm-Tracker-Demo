@@ -1,5 +1,19 @@
 
 
-:host{
-    background: hsl(261, 64%, 71%),;
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+
+.landing-page{
+    height: 100vh;
+    background-color: #303030;
 }
+.landing-page h1{
+    font-family: 'Zen Dots', cursive;
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 56px;
+    color: white;
+    display: block;
+    text-align: center;
+    padding-top: 100px;
+}
+
