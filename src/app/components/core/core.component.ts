@@ -43,8 +43,7 @@ export class CoreComponent implements OnInit {
 
   logout(){
     this.afAuth.signOut();
-    this.router.navigate(['landing'])
+    this.router.navigate(['/landing'])
     localStorage.clear();
-
   }
 }

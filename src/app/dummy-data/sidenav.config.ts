@@ -1,9 +1,5 @@
 export const SidenavElements = [
-    {
-        name:"Home",
-        link:"landing",
-        icon:"home"
-    },
+ 
     {
         name:"Characters",
         link:"characters",

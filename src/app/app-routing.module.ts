@@ -3,8 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
 import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/login']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/landing']);
 const redirectLoggedIn = () => redirectLoggedInTo(['/landing'])
+const redirectLoggedInLanding = () => redirectLoggedInTo(['/characters'])
+
 
 const routes: Routes = [
   {
@@ -13,7 +15,8 @@ const routes: Routes = [
   },
   {
     path:"landing",
-    component: LandingComponent
+    component: LandingComponent,
+    canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectLoggedIn}
   },
   {
     path:"characters",
@@ -24,12 +27,6 @@ const routes: Routes = [
     path:"tracker",
     loadChildren: () =>import('./tracker-module/tracker.module').then(m=>m.TrackerModule),
     canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin}
-  },
-  {
-    path:"login",
-    loadChildren: () =>import('src/app/login-module/login.module').then(m=>m.LoginModule),
-    canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectLoggedIn}
-  
   },
 ];
 
