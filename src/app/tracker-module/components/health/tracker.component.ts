@@ -20,6 +20,7 @@ export class TrackerComponent implements OnInit {
   @Input() totalLLeg!:number
   @Input() stamina!:number
   @Input() ms!:number
+
   currentHealth!:number 
   currentHeadHP!:number 
   currentBodyHP!:number 
@@ -29,6 +30,8 @@ export class TrackerComponent implements OnInit {
   currentLLegHP!:number 
   currentStamina!:number 
   currentMS!:number
+
+
 
   turn:number = 1
   roundOne!:number
@@ -105,7 +108,6 @@ export class TrackerComponent implements OnInit {
     stSpent!:number
     stLeft!:number
 
-    selected!:string
     
 
   constructor() { }
@@ -130,6 +132,9 @@ export class TrackerComponent implements OnInit {
     this.currentLLegHP = this.totalLLeg
     this.currentStamina = this.stamina
     this.currentMS = this.ms
+
+    
+    
 
    
     if(this.currentStamina == this.stamina){
@@ -464,7 +469,7 @@ export class TrackerComponent implements OnInit {
     if(this.currentRLegHP == 0){
       this.currentRLegHP = this.totalRLeg
       this.rlegBroken = this.rlegBroken + 1
-      this.currentMS = this.currentMS / 2
+      this.currentMS = this.currentMS - (this.currentMS/4)
      }
      if(this.rlegBroken == 1){
       this.rlegBrokenFirst = true
@@ -486,7 +491,7 @@ export class TrackerComponent implements OnInit {
     if(this.currentLLegHP == 0){
       this.currentLLegHP = this.totalLLeg
       this.llegBroken = this.llegBroken + 1
-      this.currentMS = this.currentMS / 2
+      this.currentMS = this.currentMS - (this.currentMS/4)
      }
      if(this.llegBroken == 1){
       this.llegBrokenFirst = true

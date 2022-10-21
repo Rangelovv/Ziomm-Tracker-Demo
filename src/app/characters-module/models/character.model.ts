@@ -1,8 +1,9 @@
 
 
 export class CharacterModel {
-   public name?:string
-   public tribe?:string
+   public id?:string
+   public name!:string
+   public tribe!:string
    public totalHP!:number
    public headHP!:number
    public bodyHP!:number

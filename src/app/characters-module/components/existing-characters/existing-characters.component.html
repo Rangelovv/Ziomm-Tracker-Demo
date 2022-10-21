@@ -16,6 +16,11 @@
                 <li>Right Leg HP: {{character.rlegHP}} </li>
                 <li>Left Leg HP: {{character.llegHP}} </li>
                 <li>Movement Speed(MS): {{character.movementSpeed}} </li>
+
+                <div class="delete-button">
+                    <button mat-raised-button color="warn" (click)="deleteCharacter(character)">Delete</button>
+                </div>
+                
             </mat-expansion-panel>
     </mat-accordion>
 </div>

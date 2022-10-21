@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CharacterModel } from '../models/character.model';
-import { Firestore, snapToData } from '@angular/fire/firestore';
+import { deleteDoc, doc, Firestore, snapToData, where } from '@angular/fire/firestore';
 import { collection } from '@angular/fire/firestore';
 import { addDoc } from '@angular/fire/firestore';
 import { collectionData } from '@angular/fire/firestore';
@@ -28,16 +28,29 @@ export class CharactersService {
   returnCharacters():Observable<CharacterModel[]>{
     let uid = localStorage.getItem('uid')
     const charCollection = this.afs.collection<CharacterModel>(`users/${uid}/characters/`)
-    return charCollection.valueChanges()
+    return charCollection.snapshotChanges().pipe(
+      map(chars => chars.map(char => {
+        const data = char.payload.doc.data();
+        const id = char.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
   }
 
 
 
   addCharacter(character: CharacterModel){
     let uid = localStorage.getItem('uid')
-    const booksRef = collection(this.fr, `users/${uid}/characters`,); 
+    const booksRef = collection(this.fr, `users/${uid}/characters`); 
     return addDoc(booksRef, character);
 
+  }
+
+  deleteCharacter(id:string|undefined){
+    let uid = localStorage.getItem('uid')
+    const charCollection = this.afs.doc<CharacterModel>(`users/${uid}/characters/${id}`).delete()
+    
+    
   }
 
  
