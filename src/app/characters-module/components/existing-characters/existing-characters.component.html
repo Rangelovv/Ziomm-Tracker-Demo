@@ -1,28 +1,31 @@
-<div class="panels-container" >
-    <mat-accordion>
-            <mat-expansion-panel *ngFor="let character of characters | async">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>{{character.name}}</mat-panel-title>
-                </mat-expansion-panel-header>
-                <h3 *ngIf="character.tribe; else noTribe ">{{character.name}} is from the tribe {{character.tribe}}</h3>
-                <ng-template #noTribe>{{character.name}} does not have a tribe.</ng-template>
+<div class="existing-characters-wrapper-primary">
+    <h1>Explore your existing characters</h1>
+    <div class="panels-container" >
+        <mat-accordion>
+                <mat-expansion-panel *ngFor="let character of characters | async">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>{{character.name}}</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <h3 *ngIf="character.tribe; else noTribe ">{{character.name}} is from the tribe {{character.tribe}}</h3>
+                    <ng-template #noTribe>{{character.name}} does not have a tribe.</ng-template>
 
-                <h2>Character statistics</h2>
-                <li>Toatal HP: {{character.totalHP}}  </li>
-                <li>Head HP: {{character.headHP}} </li>
-                <li>Body HP: {{character.bodyHP}} </li>
-                <li>Right Arm HP: {{character.rarmHP}} </li>
-                <li>Left Arm HP: {{character.larmHP}} </li>
-                <li>Right Leg HP: {{character.rlegHP}} </li>
-                <li>Left Leg HP: {{character.llegHP}} </li>
-                <li>Movement Speed(MS): {{character.movementSpeed}} </li>
+                    <h2>Character statistics</h2>
+                    <li>Toatal HP: {{character.totalHP}}  </li>
+                    <li>Head HP: {{character.headHP}} </li>
+                    <li>Body HP: {{character.bodyHP}} </li>
+                    <li>Right Arm HP: {{character.rarmHP}} </li>
+                    <li>Left Arm HP: {{character.larmHP}} </li>
+                    <li>Right Leg HP: {{character.rlegHP}} </li>
+                    <li>Left Leg HP: {{character.llegHP}} </li>
+                    <li>Movement Speed(MS): {{character.movementSpeed}} </li>
 
-                <div class="delete-button">
-                    <button mat-raised-button color="warn" (click)="deleteCharacter(character)">Delete</button>
-                </div>
-                
-            </mat-expansion-panel>
-    </mat-accordion>
+                    <div class="delete-button">
+                        <button mat-raised-button color="warn" (click)="deleteCharacter(character)">Delete</button>
+                    </div>
+                    
+                </mat-expansion-panel>
+        </mat-accordion>
+    </div>
 </div>
 
    

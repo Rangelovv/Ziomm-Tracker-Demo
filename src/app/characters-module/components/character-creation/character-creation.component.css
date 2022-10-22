@@ -3,17 +3,48 @@
     padding-left: 10%;
     padding-right: 10%;
 }
+.character-creation-primary{
+    background-color: #303030;
+    height: 100vh;
+}
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
     .stepper{
         padding-left: 0%;
         padding-right: 0%;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
     .mat-form-field{
         width: 50%;
+    }
+
+}
+
+.character-creation-primary h1{
+    font-family: 'Zen Dots', cursive;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 56px;
+    color: white;
+    display: block;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 30px;
+}
+
+@media (max-width: 750px) {
+    .character-creation-primary h1{
+        font-family: 'Zen Dots', cursive;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 56px;
+        color: white;
+        display: block;
+        text-align: center;
+        padding-top: 100px;
+        padding-bottom: 30px;
     }
 
 }

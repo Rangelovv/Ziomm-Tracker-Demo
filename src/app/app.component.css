@@ -12,3 +12,15 @@
     
 
   }
+
+  ::ng-deep .mat-tab-list .mat-tab-labels {
+    color:rgb(255, 0, 8);
+    background-color: #5d5d5d;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+    color: #81e1b1;
+    background-color: #303030;
+    font-family: 'Zen Dots', cursive;
+    font-size: 18px;
+}

@@ -52,3 +52,7 @@
     display: none;
   } 
 }
+
+.mat-toolbar {
+  background-color: #7b1fa2;
+}

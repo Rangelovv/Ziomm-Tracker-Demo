@@ -1,94 +1,97 @@
-<div class="stepper">
-  <mat-horizontal-stepper [linear]="isLinear" #stepper>
-    <form [formGroup]="charachterAddForm2">
-      
-      <mat-step>
-          <ng-template matStepLabel>Name</ng-template>
-          <p>What is the name of your character ?</p>
-          <mat-form-field appearance="fill">
-              <mat-label>Name</mat-label>
-              <input matInput required  formControlName="name">
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-      </mat-step>
+  <div class="character-creation-primary">
+    <h1>Create your character</h1>
+    <div class="stepper">
+      <mat-horizontal-stepper [linear]="isLinear" #stepper>
+        <form [formGroup]="charachterAddForm2">
+          
+          <mat-step>
+              <ng-template matStepLabel>Name</ng-template>
+              <p>What is the name of your character ?</p>
+              <mat-form-field appearance="fill">
+                  <mat-label>Name</mat-label>
+                  <input matInput required  formControlName="name">
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+          </mat-step>
 
-      <mat-step lable="Tribe">
-          <ng-template matStepLabel>Tribe</ng-template>
-          <p>Choose from which tribe is your character ?</p>
-          <mat-form-field appearance="fill">
-              <mat-label>Tribe</mat-label>
-              <input matInput required formControlName="tribe">
-          </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-      </mat-step>
+          <mat-step lable="Tribe">
+              <ng-template matStepLabel>Tribe</ng-template>
+              <p>Choose from which tribe is your character ?</p>
+              <mat-form-field appearance="fill">
+                  <mat-label>Tribe</mat-label>
+                  <input matInput required formControlName="tribe">
+              </mat-form-field>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+          </mat-step>
 
-      <mat-step lable="Stats">
-          <ng-template matStepLabel>Stats</ng-template>
-          <p>Type in your stats ?</p>
-          <mat-form-field appearance="fill">
-              <mat-label>Total HP</mat-label>
-              <input type="number" matInput required formControlName="totalHP">
-          </mat-form-field>
-          <div class="head&body">
-            <mat-form-field appearance="fill">
-              <mat-label>Head HP</mat-label>
-              <input type="number" matInput required formControlName="headHP">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Body HP</mat-label>
-              <input type="number" matInput required formControlName="bodyHP">
-            </mat-form-field>
-          </div>
-          <div class="arms">
-            <mat-form-field appearance="fill">
-              <mat-label>Left Arm HP</mat-label>
-              <input type="number" matInput required formControlName="larmHP">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Right Arm HP</mat-label>
-              <input type="number" matInput required formControlName="rarmHP">
-            </mat-form-field>
-          </div>
-          <div class="legs">
-            <mat-form-field appearance="fill">
-              <mat-label>Left Leg HP</mat-label>
-              <input type="number" matInput required formControlName="llegHP">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Right Leg HP</mat-label>
-              <input type="number" matInput required formControlName="rlegHP">
-            </mat-form-field>
-          </div>
-          <div class="ms&stamina">
-            <mat-form-field appearance="fill">
-              <mat-label>MS</mat-label>
-              <input type="number" matInput required formControlName="movementSpeed">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Stamina</mat-label>
-              <input type="number" matInput required formControlName="stamina">
-            </mat-form-field>
-          </div>
-          <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-      </mat-step>
+          <mat-step lable="Stats">
+              <ng-template matStepLabel>Stats</ng-template>
+              <p>Type in your stats ?</p>
+              <mat-form-field appearance="fill">
+                  <mat-label>Total HP</mat-label>
+                  <input type="number" matInput required formControlName="totalHP">
+              </mat-form-field>
+              <div class="head&body">
+                <mat-form-field appearance="fill">
+                  <mat-label>Head HP</mat-label>
+                  <input type="number" matInput required formControlName="headHP">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Body HP</mat-label>
+                  <input type="number" matInput required formControlName="bodyHP">
+                </mat-form-field>
+              </div>
+              <div class="arms">
+                <mat-form-field appearance="fill">
+                  <mat-label>Left Arm HP</mat-label>
+                  <input type="number" matInput required formControlName="larmHP">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Right Arm HP</mat-label>
+                  <input type="number" matInput required formControlName="rarmHP">
+                </mat-form-field>
+              </div>
+              <div class="legs">
+                <mat-form-field appearance="fill">
+                  <mat-label>Left Leg HP</mat-label>
+                  <input type="number" matInput required formControlName="llegHP">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Right Leg HP</mat-label>
+                  <input type="number" matInput required formControlName="rlegHP">
+                </mat-form-field>
+              </div>
+              <div class="ms&stamina">
+                <mat-form-field appearance="fill">
+                  <mat-label>MS</mat-label>
+                  <input type="number" matInput required formControlName="movementSpeed">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Stamina</mat-label>
+                  <input type="number" matInput required formControlName="stamina">
+                </mat-form-field>
+              </div>
+              <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+          </mat-step>
 
-      <mat-step lable="Done">
-          <ng-template matStepLabel>Done</ng-template>
-          <p>Are you sure, you are ready ?</p>
-          <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button (click)="onSubmit(); stepper.reset(); openSnackBar()" >Done</button>
-          </div>
-      </mat-step>
+          <mat-step lable="Done">
+              <ng-template matStepLabel>Done</ng-template>
+              <p>Are you sure, you are ready ?</p>
+              <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button (click)="onSubmit(); stepper.reset(); openSnackBar()" >Done</button>
+              </div>
+          </mat-step>
 
-    </form>
-  </mat-horizontal-stepper>
-</div>
+        </form>
+      </mat-horizontal-stepper>
+    </div>
+  </div>  
