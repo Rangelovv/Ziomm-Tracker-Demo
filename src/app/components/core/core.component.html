@@ -5,12 +5,12 @@
     <button mat-icon-button (click)="opened =! opened">
       <mat-icon>menu</mat-icon>
     </button>
-    <button mat-button color="basic" *ngFor="let item of elements" [routerLink]=[item.link] (click)="closeSidenavOnRouting()" > {{item.name}} </button>
   </div>
     
 
 
     <span class="example-spacer"></span>
+    <button mat-button color="basic" *ngFor="let item of elements" [routerLink]=[item.link] (click)="closeSidenavOnRouting()" > {{item.name}} </button>
 
       <ng-container *ngIf="(pictureUrl$ | async) as pictureUrl" >
         <img [matMenuTriggerFor]="menu" class="userAvatar" [src]="pictureUrl">
@@ -30,8 +30,8 @@
 
 
 
-<mat-sidenav-container hasBackdrop="false">
-  <mat-sidenav [opened]="opened" mode="push" autoFocus="false"  >
+<mat-sidenav-container hasBackdrop="true">
+  <mat-sidenav mat-sidenav fixedInViewport="true" [opened]="opened" mode="push" autoFocus="false"  >
     <mat-action-list>
 
       <button mat-list-item *ngFor="let item of elements" [routerLink]=[item.link] (click)="closeSidenavOnRouting()" >

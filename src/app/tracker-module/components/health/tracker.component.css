@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+
+
 .panels-container-secondar{
     padding-top: 3%;
     padding-left: 20%;
@@ -20,7 +23,10 @@
    
 }
 
+.inlineStat h1{
+    font-family: 'Zen Dots', cursive;
 
+}
 
 .statistics{
     display: inline-flexbox;
@@ -29,13 +35,14 @@
 .inlineStat{
    display: inline-flex;
 }
-@media (max-width: 375px) {
+@media (max-width: 480px) {
     .panels-container-secondar {
         padding-left: 0%;
         padding-right: 0%;   
     }
     .inlineStat h1{
         font-size: 15px;
+        font-family: 'Zen Dots', cursive;
     }
 }
 
@@ -87,6 +94,11 @@
 .mat-form-field{
     width: 50%;
 }
+
+.turns h1{
+    font-family: 'Zen Dots', cursive;
+}
+
 @media (max-width: 590px) {
     .mat-form-field{
         width: 50%;
@@ -94,6 +106,8 @@
     
     .turns h1{
         font-size: 18px;
+        font-family: 'Zen Dots', cursive;
+
     }
     .trackerContainer{
         display: inline-flex;
@@ -107,4 +121,5 @@
 p, h3{
     margin-top: -100;
 }
+
 
