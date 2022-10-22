@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+
 @media (max-width: 950px) {
     .panels-container {
         padding-left: 0%;
@@ -27,4 +29,9 @@ table {
         padding-left: 10%;
       }
    
+}
+
+
+.mat-expansion-panel-header{
+  font-family: 'Exo 2', sans-serif;
 }
