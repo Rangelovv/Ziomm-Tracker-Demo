@@ -4,14 +4,15 @@ import { LandingComponent } from './components/landing/landing.component';
 import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/landing']);
-const redirectLoggedIn = () => redirectLoggedInTo(['/landing'])
+const redirectLoggedIn = () => redirectLoggedInTo(['/characters'])
 const redirectLoggedInLanding = () => redirectLoggedInTo(['/characters'])
 
 
 const routes: Routes = [
   {
     path:"",
-    component: LandingComponent
+    component: LandingComponent,
+    canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectLoggedInLanding}
   },
   {
     path:"landing",
