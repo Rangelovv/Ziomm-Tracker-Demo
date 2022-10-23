@@ -10,7 +10,7 @@
 
 
     <span class="example-spacer"></span>
-    <button mat-button color="basic" *ngFor="let item of elements" [routerLink]=[item.link] (click)="closeSidenavOnRouting()" > {{item.name}} </button>
+    <button mat-button color="basic" *ngFor="let item of elements" [routerLink]=[item.link] > {{item.name}} </button>
 
       <ng-container *ngIf="(pictureUrl$ | async) as pictureUrl" >
         <img [matMenuTriggerFor]="menu" class="userAvatar" [src]="pictureUrl">

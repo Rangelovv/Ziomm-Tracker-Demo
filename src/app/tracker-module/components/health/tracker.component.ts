@@ -131,9 +131,7 @@ export class TrackerComponent implements OnInit {
     this.currentRLegHP = this.totalRLeg
     this.currentLLegHP = this.totalLLeg
     this.currentStamina = this.stamina
-    this.currentMS = this.ms
-
-    
+    this.currentMS = this.ms    
     
 
    
